@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)file:///Users/bennytam/Downloads/poe-preview%20(5).html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39; &#39;unsafe-inline&#39; &#39;unsafe-eval&#39; data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src &#39;self&#39; https://www.youtube.com https://trytako.com; child-src &#39;self&#39;; manifest-src &#39;self&#39;; worker-src &#39;self&#39;; upgrade-insecure-requests; block-all-mixed-content;">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 Vocab Master — Environment B2</title>
+<script src="./📚 Vocab Master — Environment B2_files/saved_resource"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+body{background:#0f172a;color:#e2e8f0;min-height:100vh;overflow-x:hidden}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:linear-gradient(135deg,#1e1b4b,#312e81);box-shadow:0 4px 20px rgba(0,0,0,.5);display:flex;align-items:center;flex-wrap:wrap;padding:0 4px}
+.nav-brand{font-weight:900;font-size:14px;color:#fbbf24;padding:10px 6px;white-space:nowrap}
+.nav-tabs{display:flex;gap:0;flex-wrap:wrap}
+.nav-tab{padding:10px 9px;font-size:10.5px;font-weight:600;color:rgba(255,255,255,.55);cursor:pointer;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap}
+.nav-tab:hover{color:#fff;background:rgba(255,255,255,.05)}
+.nav-tab.active{color:#fbbf24;border-bottom-color:#fbbf24;background:rgba(251,191,36,.08)}
+.content{padding-top:52px;min-height:100vh}
+.panel{display:none;padding:14px;max-width:900px;margin:0 auto}
+.panel.active{display:block}
+.pill{display:inline-block;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:600;cursor:pointer;border:2px solid transparent;transition:.2s;margin:2px}
+.pill.on{border-color:#fbbf24;color:#fbbf24;background:rgba(251,191,36,.1)}
+.pill.off{border-color:rgba(255,255,255,.13);color:rgba(255,255,255,.35)}
+.pill.off:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.7)}
+.fc-wrap{perspective:1200px;width:100%;max-width:480px;margin:0 auto}
+.fc-inner{position:relative;width:100%;min-height:400px;transition:transform .65s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d;cursor:pointer}
+.fc-inner.flipped{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.4)}
+.fc-back{transform:rotateY(180deg)}
+.btn{padding:8px 16px;border-radius:10px;font-weight:700;font-size:12px;border:none;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:5px}
+.btn:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(0,0,0,.3)}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:#fbbf24;color:#1e1b4b}
+.btn-outline{background:transparent;border:2px solid rgba(255,255,255,.2);color:#e2e8f0}
+.btn-outline:hover{border-color:rgba(255,255,255,.5)}
+.btn-green{background:#22c55e;color:#fff}
+.btn-red{background:#ef4444;color:#fff}
+.hm-letter{width:32px;height:36px;border-radius:8px;font-size:13px;font-weight:700;border:none;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;justify-content:center;margin:2px}
+.hm-letter:hover:not(:disabled){transform:scale(1.1)}
+.hm-letter:disabled{opacity:.3;cursor:default}
+.hm-letter.correct{background:#22c55e;color:#fff}
+.hm-letter.wrong{background:#ef4444;color:#fff}
+.hm-blank{display:inline-flex;align-items:center;justify-content:center;width:26px;height:38px;border-bottom:3px solid #fbbf24;margin:2px;font-size:18px;font-weight:700;color:#fff;transition:.2s}
+.hm-blank.revealed{color:#22c55e;border-bottom-color:#22c55e}
+.hm-blank.space{border-bottom-color:transparent;width:14px}
+.quiz-opt{width:100%;padding:13px 16px;border-radius:12px;font-size:13px;font-weight:600;border:2px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#e2e8f0;cursor:pointer;transition:.2s;text-align:left}
+.quiz-opt:hover:not(.chosen){border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.06)}
+.quiz-opt.right{border-color:#22c55e;background:rgba(34,197,94,.15);color:#22c55e}
+.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.15);color:#ef4444}
+.spell-input{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.15);border-radius:12px;padding:12px 16px;font-size:18px;font-weight:700;color:#fff;width:100%;text-align:center;letter-spacing:2px;outline:none;transition:.2s}
+.spell-input:focus{border-color:#a78bfa}
+.spell-input.right{border-color:#22c55e;color:#22c55e}
+.spell-input.wrong{border-color:#ef4444;color:#ef4444}
+@keyframes popIn{0%{transform:scale(.8);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+@keyframes confetti{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(120px) rotate(720deg);opacity:0}}
+@keyframes fuseburn{0%{stroke-dashoffset:0}100%{stroke-dashoffset:200}}
+@keyframes bombPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes explode{0%{transform:scale(1);opacity:1}50%{transform:scale(2.5);opacity:.7}100%{transform:scale(4);opacity:0}}
+.pop-in{animation:popIn .35s ease-out}
+.shake{animation:shake .4s ease}
+.confetti-piece{position:fixed;width:8px;height:8px;border-radius:2px;pointer-events:none;z-index:999;animation:confetti 1.2s ease-out forwards}
+.bomb-pulse{animation:bombPulse .6s ease-in-out infinite}
+.explode-anim{animation:explode .6s ease-out forwards}
+.gm-banner{background:linear-gradient(90deg,#f59e0b,#d97706);color:#1e1b4b;padding:8px 14px;border-radius:12px;font-size:11px;font-weight:600;margin-bottom:14px;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.gm-banner button{background:rgba(0,0,0,.2);border:none;color:#fff;border-radius:50%;width:20px;height:20px;cursor:pointer;font-size:12px;flex-shrink:0;margin-top:1px}
+@media print{body{background:#fff!important;color:#000!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.nav,.content{display:none!important}#printZone{display:block!important}.print-page{page-break-after:always;padding:10mm}.print-page:last-child{page-break-after:avoid}.p-card{border:1.5px solid #ccc;border-radius:8px;padding:10px;break-inside:avoid;margin-bottom:8px;background:#fff}.p-table{width:100%;border-collapse:collapse;font-size:9.5pt}.p-table th,.p-table td{border:1px solid #ccc;padding:4px 7px;text-align:left}.p-table th{background:#6366f1;color:#fff;font-weight:700}.p-table tr:nth-child(even){background:#f8fafc}.p-title{font-size:18pt;font-weight:900;margin-bottom:5px;color:#312e81}.p-subtitle{font-size:10pt;color:#64748b;margin-bottom:12px}.p-cat-header{font-size:13pt;font-weight:800;color:#6366f1;margin:12px 0 6px;border-bottom:2px solid #6366f1;padding-bottom:3px}@page{margin:12mm}}
+#printZone{display:none}
+@media(max-width:640px){.nav-brand{font-size:11px}.nav-tab{padding:8px 6px;font-size:9.5px}.fc-inner{min-height:360px}.hm-letter{width:27px;height:30px;font-size:11px}.hm-blank{width:22px;height:32px;font-size:15px}}
+</style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-1\.5{height:0.375rem}.h-2{height:0.5rem}.h-20{height:5rem}.h-full{height:100%}.w-20{width:5rem}.w-full{width:100%}.max-w-3xl{max-width:48rem}.max-w-lg{max-width:32rem}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-4{border-width:4px}.border-indigo-700{--tw-border-opacity:1;border-color:rgb(67 56 202 / var(--tw-border-opacity, 1))}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.bg-indigo-900{--tw-bg-opacity:1;background-color:rgb(49 46 129 / var(--tw-bg-opacity, 1))}.bg-slate-700{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-yellow-400{--tw-bg-opacity:1;background-color:rgb(250 204 21 / var(--tw-bg-opacity, 1))}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.text-center{text-align:center}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-5xl{font-size:3rem;line-height:1}.text-6xl{font-size:3.75rem;line-height:1}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.leading-relaxed{line-height:1.625}.text-green-400{--tw-text-opacity:1;color:rgb(74 222 128 / var(--tw-text-opacity, 1))}.text-indigo-400{--tw-text-opacity:1;color:rgb(129 140 248 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-100{transition-duration:100ms}.hover\:border-yellow-400:hover{--tw-border-opacity:1;border-color:rgb(250 204 21 / var(--tw-border-opacity, 1))}</style></head>
+<body>
+
+<div class="nav">
+<span class="nav-brand">📚 Environment B2</span>
+<div class="nav-tabs">
+<div class="nav-tab active" data-tab="fc" onclick="switchTab(&#39;fc&#39;)">🃏 Flash</div>
+<div class="nav-tab" data-tab="hm" onclick="switchTab(&#39;hm&#39;)">🎯 Hangman</div>
+<div class="nav-tab" data-tab="sq" onclick="switchTab(&#39;sq&#39;)">⚡ Quiz</div>
+<div class="nav-tab" data-tab="sb" onclick="switchTab(&#39;sb&#39;)">🐝 Spell</div>
+<div class="nav-tab" data-tab="wb" onclick="switchTab(&#39;wb&#39;)">💣 Bomb</div>
+<div class="nav-tab" data-tab="ex" onclick="switchTab(&#39;ex&#39;)">📄 PDF</div>
+</div>
+</div>
+
+<div class="content">
+
+<!-- Google Meet Banner -->
+<div class="gm-banner" id="gmBanner" style="max-width: 900px; margin: 10px auto 0px; display: none;">
+<button onclick="this.parentElement.style.display=&#39;none&#39;">✕</button>
+<div>🎥 <b>Google Meet 分享提示：</b>請使用「分享分頁 (Share a Tab)」而非「分享整個螢幕」，這樣學生才能聽到語音朗讀及音效。Chrome → Present → 「A tab」→ 選擇此頁面。
+<button class="btn btn-outline" style="padding:3px 10px;font-size:10px;margin-left:6px;border-color:rgba(0,0,0,.3);color:#1e1b4b" onclick="initAudio()">🔊 啟動音效</button></div>
+</div>
+
+<!-- ═══ FLASHCARDS ═══ -->
+<div class="panel active" id="panel-fc">
+<div class="text-center mb-3">
+<h2 class="text-xl font-black text-yellow-400 mb-1">🃏 Flashcards</h2>
+<p class="text-xs text-slate-400">Tap to flip · 🔊 British pronunciation · Navigate with arrows</p>
+</div>
+<div class="text-center mb-2" id="fc-cats"><span class="pill on">🌡️ Climate &amp; Weather</span><span class="pill on">⚡ Energy &amp; Emissions</span><span class="pill on">🌿 Nature &amp; Life</span><span class="pill on">♻️ Protect &amp; Act</span></div>
+<div class="flex justify-center gap-2 mb-3 flex-wrap">
+<button class="btn btn-outline text-xs" onclick="fcSort(&#39;alpha&#39;)">🔤 A–Z</button>
+<button class="btn btn-outline text-xs" onclick="fcSort(&#39;random&#39;)">🎲 Random</button>
+<button class="btn btn-outline text-xs" onclick="fcSort(&#39;cat&#39;)">📂 Category</button>
+</div>
+<div class="fc-wrap" id="fcWrap">
+<div class="fc-inner" id="fcCard" onclick="fcFlip()">
+<div class="fc-face fc-front" id="fcFront">
+  <div style="background:linear-gradient(135deg,#1e3a5f,#3b82f6);height:100%;padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative">
+   <div style="position:absolute;top:10px;left:12px;display:flex;gap:4px;align-items:center">
+    <span style="font-size:10px;background:rgba(0,0,0,.25);padding:2px 8px;border-radius:8px;color:#fff">🌡️ Climate &amp; Weather</span>
+    
+   </div>
+   <div style="position:absolute;top:10px;right:12px;display:flex;gap:4px">
+    <span style="font-size:9px;background:rgba(0,0,0,.2);padding:2px 7px;border-radius:6px;color:#fff;font-weight:700">n.</span>
+    <span style="font-size:9px;background:rgba(0,0,0,.3);padding:2px 7px;border-radius:6px;color:#fbbf24;font-weight:700">B2</span>
+   </div>
+   <div style="width:180px;height:120px;border-radius:12px;overflow:hidden;margin-bottom:8px;box-shadow:0 4px 15px rgba(0,0,0,.3)"><svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="140" rx="10" fill="#1e293b"></rect><ellipse cx="100" cy="30" rx="55" ry="18" fill="#64748b"></ellipse><ellipse cx="65" cy="33" rx="35" ry="15" fill="#64748b"></ellipse><ellipse cx="135" cy="33" rx="35" ry="15" fill="#64748b"></ellipse><path d="M60,58 L57,72 A4,4,0,0,0,63,72Z" fill="#a3e635"></path><path d="M90,55 L87,69 A4,4,0,0,0,93,69Z" fill="#bef264"></path><path d="M120,58 L117,72 A4,4,0,0,0,123,72Z" fill="#a3e635"></path><path d="M75,75 L72,86 A3,3,0,0,0,78,86Z" fill="#84cc16"></path><path d="M105,73 L102,84 A3,3,0,0,0,108,84Z" fill="#bef264"></path><rect x="96" y="95" width="8" height="30" rx="2" fill="#78350f"></rect><line x1="100" y1="102" x2="86" y2="94" stroke="#78350f" stroke-width="2.5"></line><line x1="100" y1="110" x2="114" y2="102" stroke="#78350f" stroke-width="2.5"></line></svg></div>
+   <div style="font-size:22px;font-weight:900;color:#fff;letter-spacing:1px;text-align:center">acid rain</div>
+   <div style="font-family:monospace;font-size:12px;color:rgba(255,255,255,.7);margin-top:4px">/ˈæs.ɪd reɪn/</div>
+   <button onclick="event.stopPropagation();speak(&#39;acid rain&#39;)" style="margin-top:8px;background:rgba(0,0,0,.25);border:2px solid rgba(255,255,255,.3);color:#fff;padding:5px 16px;border-radius:18px;cursor:pointer;font-size:12px;font-weight:700">🔊 Listen</button>
+   <div style="position:absolute;bottom:8px;color:rgba(255,255,255,.3);font-size:10px">tap to flip →</div>
+  </div></div>
+<div class="fc-face fc-back" id="fcBack">
+  <div style="background:linear-gradient(135deg,#1e293b,#0f172a);height:100%;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #1e3a5f">
+   <div style="position:absolute;top:10px;left:12px;font-size:10px;color:#3b82f6">🌡️ Climate &amp; Weather</div>
+   <div style="font-size:28px;font-weight:900;color:#fbbf24;margin-bottom:8px;text-align:center">酸雨</div>
+   <div style="width:100%;max-width:380px">
+    <div style="background:rgba(255,255,255,.04);border-left:3px solid #3b82f6;padding:10px 12px;border-radius:0 10px 10px 0;margin-bottom:8px">
+     <div style="font-size:9px;color:#3b82f6;font-weight:700;margin-bottom:3px">📖 DEFINITION</div>
+     <div style="font-size:12px;color:#e2e8f0;line-height:1.5">rain that contains a high level of acid from industrial pollution</div>
+    </div>
+    <div style="background:rgba(255,255,255,.04);border-left:3px solid #fbbf24;padding:10px 12px;border-radius:0 10px 10px 0">
+     <div style="font-size:9px;color:#fbbf24;font-weight:700;margin-bottom:3px">📖 EXAMPLE</div>
+     <div style="font-size:12px;color:#cbd5e1;line-height:1.5"><b style="color:#3b82f6">Acid rain</b> can cause serious damage to forests and lakes.</div>
+    </div>
+   </div>
+   <div style="position:absolute;bottom:8px;color:rgba(255,255,255,.3);font-size:10px">← tap to flip</div>
+  </div></div>
+</div>
+</div>
+<div class="flex justify-center items-center gap-4 mt-4">
+<button class="btn btn-outline" onclick="fcPrev()">◀</button>
+<span class="text-sm font-bold text-slate-300" id="fcCount">1/30</span>
+<button class="btn btn-outline" onclick="fcNext()">▶</button>
+</div>
+<div class="flex justify-center gap-3 mt-3">
+<button class="btn btn-outline text-xs" onclick="fcMark(false)">❌ Don't know</button>
+<button class="btn btn-outline text-xs" onclick="fcMark(true)">✅ Know it</button>
+</div>
+<div class="text-center mt-2">
+<div class="inline-flex items-center gap-2 bg-slate-800 px-3 py-1.5 rounded-full text-xs">
+<span class="text-green-400 font-bold" id="fcKnown">0</span> known ·
+<span class="text-red-400 font-bold" id="fcLearning">30</span> learning ·
+<button class="text-yellow-400 underline" onclick="fcResetProgress()">Reset</button>
+</div>
+</div>
+</div>
+
+<!-- ═══ HANGMAN ═══ -->
+<div class="panel" id="panel-hm">
+<div class="text-center mb-3">
+<h2 class="text-xl font-black text-yellow-400 mb-1">🎯 Hangman</h2>
+<p class="text-xs text-slate-400">Guess the word before the figure is complete!</p>
+</div>
+<div class="text-center mb-2" id="hm-cats"><span class="pill on">🌡️ 1</span><span class="pill on">⚡ 2</span><span class="pill on">🌿 3</span><span class="pill on">♻️ 4</span></div>
+<div class="max-w-lg mx-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs bg-indigo-900 px-3 py-1 rounded-full" id="hmCatHint">♻️ Protect &amp; Act</span>
+<span class="text-xs text-slate-400" id="hmScore">W:0 · L:1</span>
+</div>
+<div class="flex justify-center mb-2">
+<svg viewBox="0 0 220 260" width="160" id="hmSvg">
+<line x1="20" y1="240" x2="100" y2="240" stroke="#475569" stroke-width="4" stroke-linecap="round"></line>
+<line x1="60" y1="240" x2="60" y2="30" stroke="#475569" stroke-width="4" stroke-linecap="round"></line>
+<line x1="57" y1="30" x2="150" y2="30" stroke="#475569" stroke-width="4" stroke-linecap="round"></line>
+<line x1="150" y1="30" x2="150" y2="55" stroke="#475569" stroke-width="3" stroke-linecap="round"></line>
+<circle cx="150" cy="78" r="23" fill="none" stroke="#fbbf24" stroke-width="3" class="hm-part" data-i="0" style="opacity: 1;"></circle>
+<line x1="150" y1="101" x2="150" y2="165" stroke="#fbbf24" stroke-width="3" class="hm-part" data-i="1" style="opacity: 1;"></line>
+<line x1="150" y1="120" x2="120" y2="150" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" class="hm-part" data-i="2" style="opacity: 1;"></line>
+<line x1="150" y1="120" x2="180" y2="150" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" class="hm-part" data-i="3" style="opacity: 1;"></line>
+<line x1="150" y1="165" x2="125" y2="210" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" class="hm-part" data-i="4" style="opacity: 1;"></line>
+<line x1="150" y1="165" x2="175" y2="210" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" class="hm-part" data-i="5" style="opacity: 0;"></line>
+<circle cx="142" cy="73" r="2.5" fill="#ef4444" class="hm-part" data-i="5" style="opacity: 0;"></circle>
+<circle cx="158" cy="73" r="2.5" fill="#ef4444" class="hm-part" data-i="5" style="opacity: 0;"></circle>
+<path d="M140,88 Q150,82 160,88" fill="none" stroke="#ef4444" stroke-width="2" class="hm-part" data-i="5" style="opacity: 0;"></path>
+</svg>
+</div>
+<div class="flex justify-center flex-wrap mb-2" id="hmBlanks"><span class="hm-blank"></span><span class="hm-blank"></span><span class="hm-blank"></span><span class="hm-blank"></span><span class="hm-blank revealed">E</span></div>
+<div class="text-center mb-1"><span class="text-xs text-slate-400" id="hmHint">n. · _____ (5)</span></div>
+<div class="text-center mb-2"><button class="btn btn-outline text-xs" onclick="hmShowIPA()" id="hmIPABtn">💡 IPA Hint</button></div>
+<div class="text-center mb-2" id="hmKeys"><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">A</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">B</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">C</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">D</button><button class="hm-letter correct" disabled="" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">E</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">F</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">G</button><button class="hm-letter wrong" disabled="" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">H</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">I</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">J</button><button class="hm-letter wrong" disabled="" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">K</button><button class="hm-letter wrong" disabled="" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">L</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">M</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">N</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">O</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">P</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">Q</button><button class="hm-letter wrong" disabled="" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">R</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">S</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">T</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">U</button><button class="hm-letter wrong" disabled="" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">V</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">W</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">X</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">Y</button><button class="hm-letter" style="background: rgba(255, 255, 255, 0.08); color: rgb(226, 232, 240);">Z</button></div>
+<div class="text-center mb-2 text-lg font-bold hidden" id="hmResult"><span class="text-red-400">💀 Answer: <b>ecosystem</b> (生態系統)</span></div>
+<div class="text-center"><button class="btn btn-gold" onclick="hmNew()">🔄 New Word</button></div>
+</div>
+</div>
+
+<!-- ═══ SPEED QUIZ ═══ -->
+<div class="panel" id="panel-sq">
+<div class="text-center mb-3">
+<h2 class="text-xl font-black text-yellow-400 mb-1">⚡ Speed Quiz</h2>
+<p class="text-xs text-slate-400">Pick the correct answer — race the clock!</p>
+</div>
+<div class="flex justify-center gap-2 mb-3 flex-wrap">
+<button class="btn btn-gold text-xs" id="sqBtn1" onclick="sqSetMode(&#39;en2zh&#39;)">EN → 中</button>
+<button class="btn btn-outline text-xs" id="sqBtn2" onclick="sqSetMode(&#39;zh2en&#39;)">中 → EN</button>
+<button class="btn btn-outline text-xs" id="sqBtn3" onclick="sqSetMode(&#39;def2en&#39;)">Def → EN</button>
+</div>
+<div class="max-w-lg mx-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-bold">🏆 <span id="sqScore">0</span></span>
+<span class="text-sm">🔥 <span id="sqStreak" class="text-yellow-400 font-bold">0</span></span>
+<span class="text-sm">⏱ <span id="sqTimer" class="font-mono text-yellow-400">0</span>s</span>
+</div>
+<div class="w-full h-1.5 bg-slate-700 rounded-full mb-3 overflow-hidden"><div class="h-full bg-yellow-400 rounded-full transition-all duration-100" id="sqBar" style="width: 0%; background: rgb(239, 68, 68);"></div></div>
+<div class="bg-slate-800 rounded-2xl p-5 mb-3 text-center pop-in" id="sqQuestion">
+<span class="text-xs text-slate-500 block mb-1" id="sqCatLabel">🌡️ Climate &amp; Weather</span>
+<span class="text-2xl font-black" id="sqWord" style="font-size: 22px;">global warming</span>
+<span class="text-sm text-slate-400 block mt-1" id="sqIPA">/ˌɡləʊ.bəl ˈwɔː.mɪŋ/</span>
+</div>
+<div class="grid grid-cols-1 gap-2 mb-3" id="sqOpts"><button class="quiz-opt chosen">廢物；浪費</button><button class="quiz-opt chosen">節約；保存</button><button class="quiz-opt chosen right">全球暖化</button><button class="quiz-opt chosen">太陽能</button></div>
+<div class="text-center" id="sqNextWrap"><button class="btn btn-gold" onclick="sqNextQ()">Next ▶</button></div>
+</div>
+</div>
+
+<!-- ═══ SPELLING BEE ═══ -->
+<div class="panel" id="panel-sb">
+<div class="text-center mb-3">
+<h2 class="text-xl font-black text-yellow-400 mb-1">🐝 Spelling Bee</h2>
+<p class="text-xs text-slate-400">Listen &amp; spell it correctly!</p>
+</div>
+<div class="max-w-lg mx-auto">
+<div class="flex justify-between items-center mb-3">
+<span class="text-sm font-bold">✅ <span id="sbCorrect">0</span>/<span id="sbTotal">1</span></span>
+<span class="text-sm">🔥 <span id="sbStreak" class="text-yellow-400 font-bold">0</span></span>
+</div>
+<div class="bg-slate-800 rounded-2xl p-6 text-center mb-3">
+<span class="text-xs text-slate-500 block mb-1" id="sbCat">⚡ Energy &amp; Emissions</span>
+<button class="text-5xl mb-2 block mx-auto bg-indigo-900 rounded-full w-20 h-20 flex items-center justify-center border-4 border-indigo-700 hover:border-yellow-400 transition" onclick="sbSpeak()" title="Play">🔊</button>
+<div class="flex justify-center gap-2 mb-2 flex-wrap">
+<span class="bg-slate-700 px-3 py-1 rounded-full text-xs" id="sbLetters">9 letters</span>
+<span class="bg-slate-700 px-3 py-1 rounded-full text-xs" id="sbPOS">n.</span>
+</div>
+<button class="btn btn-outline text-xs mb-2" onclick="sbHint()" id="sbHintBtn" style="display: none;">💡 Hint</button>
+<div class="text-yellow-400 text-sm font-bold mb-2" id="sbZhHint">💡 排放（物） — the production and discharge of gas or radiation</div>
+<input type="text" class="spell-input wrong" id="sbInput" placeholder="Type the word…" autocomplete="off" autocapitalize="off" disabled="">
+</div>
+<div class="flex justify-center gap-3">
+<button class="btn btn-outline" onclick="sbSkip()">⏭ Skip</button>
+<button class="btn btn-gold" onclick="sbCheck()">✔ Check</button>
+</div>
+<div class="text-center mt-2 text-base font-bold" id="sbResult"><span class="text-red-400">❌ <b>emissions</b> (排放（物）) /ɪˈmɪʃ.ənz/</span></div>
+<div class="text-center mt-2" id="sbNextWrap"><button class="btn btn-gold" onclick="sbNext()">Next ▶</button></div>
+</div>
+</div>
+
+<!-- ═══ WORD BOMB ═══ -->
+<div class="panel" id="panel-wb">
+<div class="text-center mb-3">
+<h2 class="text-xl font-black text-yellow-400 mb-1">💣 Word Bomb</h2>
+<p class="text-xs text-slate-400">Type the word before the bomb explodes! 在炸彈爆炸前輸入正確的字！</p>
+</div>
+<div class="max-w-lg mx-auto">
+<div class="flex justify-between items-center mb-3">
+<span class="text-sm">❤️ <span id="wbLives" style="color: rgb(239, 68, 68);">●●○</span></span>
+<span class="text-sm font-bold">🏆 <span id="wbScore">0</span></span>
+<span class="text-sm">⚡ Lv.<span id="wbLevel" class="text-yellow-400 font-bold">1</span></span>
+<span class="text-sm">🔥 <span id="wbStreakN" class="text-yellow-400 font-bold">0</span></span>
+</div>
+<div class="w-full h-2 bg-slate-700 rounded-full mb-3 overflow-hidden"><div class="h-full rounded-full transition-all" id="wbBar" style="width: 0%; background: linear-gradient(90deg, rgb(239, 68, 68), rgb(251, 191, 36));"></div></div>
+<div class="bg-slate-800 rounded-2xl p-5 text-center mb-4">
+<div class="text-xs text-slate-500 mb-1" id="wbCatLabel">⚡ Energy &amp; Emissions</div>
+<div class="text-sm text-slate-300 mb-3 leading-relaxed" id="wbDef" style="min-height:40px">the amount of carbon dioxide that your activities produce</div>
+<div class="text-xs text-indigo-400 mb-1" id="wbClue">n. · 16 letters · Starts with "C"</div>
+<div class="text-6xl mb-2 explode-anim" id="wbBomb">💥</div>
+<div class="text-xs text-slate-500 mb-2">⏱ <span id="wbTimer" class="font-mono text-yellow-400 text-lg">0</span>s</div>
+<input type="text" class="spell-input wrong" id="wbInput" placeholder="Type the word…" autocomplete="off" autocapitalize="off" disabled="">
+</div>
+<div class="flex justify-center gap-3">
+<button class="btn btn-outline" onclick="wbSkipWord()">⏭ Skip (-1❤️)</button>
+<button class="btn btn-gold" onclick="wbSubmit()">💥 Submit</button>
+</div>
+<div class="text-center mt-2 text-base font-bold" id="wbResult"><span class="text-red-400">💥 BOOM! Answer: <b>carbon footprint</b> (碳足跡)</span></div>
+<div class="text-center mt-2" id="wbNextWrap"><button class="btn btn-gold" onclick="wbNextWord()">Next 💣</button></div>
+<div class="text-center mt-3 hidden" id="wbGameOver">
+<div class="text-2xl font-black text-red-400 mb-2">💥 GAME OVER</div>
+<div class="text-sm text-slate-400 mb-2">Score: <span id="wbFinalScore" class="text-yellow-400 font-bold">0</span> · High: <span id="wbHighScore" class="text-green-400 font-bold">0</span></div>
+<button class="btn btn-gold" onclick="wbStart()">🔄 Play Again</button>
+</div>
+</div>
+</div>
+
+<!-- ═══ EXPORT PDF ═══ -->
+<div class="panel" id="panel-ex">
+<div class="text-center mb-3">
+<h2 class="text-xl font-black text-yellow-400 mb-1">📄 Export PDF</h2>
+<p class="text-xs text-slate-400">Print → Save as PDF for offline revision</p>
+</div>
+<div class="max-w-3xl mx-auto">
+<div class="bg-indigo-900 border-2 border-indigo-700 rounded-2xl p-4 mb-5">
+<h3 class="text-base font-bold text-yellow-400 mb-1">📋 如何匯出 PDF</h3>
+<div class="text-xs text-slate-300 space-y-1">
+<p>① 點擊下方按鈕 → ② 在列印視窗選「<b class="text-yellow-400">Save as PDF</b>」→ ③ 儲存離線溫習</p>
+<p class="text-slate-500">💡 也可直接 Ctrl+S 存為 HTML，傳給學生用瀏覽器打開即可使用所有互動功能。</p>
+</div>
+</div>
+<div class="text-center mb-3" id="ex-cats"><span class="pill on">🌡️ Climate &amp; Weather</span><span class="pill on">⚡ Energy &amp; Emissions</span><span class="pill on">🌿 Nature &amp; Life</span><span class="pill on">♻️ Protect &amp; Act</span></div>
+<div class="grid gap-3 mb-5" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+<div class="bg-slate-800 rounded-xl p-4 border border-slate-700 hover:border-yellow-400 transition">
+<div class="text-3xl mb-2">🃏</div>
+<h3 class="text-sm font-bold text-white mb-1">Flashcard Sheets</h3>
+<p class="text-xs text-slate-400 mb-2">可剪裁閃卡，正面英文+圖片，背面中文+例句</p>
+<button class="btn btn-gold w-full justify-center text-xs" onclick="exportFlashcards()">🖨️ Print</button>
+</div>
+<div class="bg-slate-800 rounded-xl p-4 border border-slate-700 hover:border-yellow-400 transition">
+<div class="text-3xl mb-2">📋</div>
+<h3 class="text-sm font-bold text-white mb-1">Vocab Table</h3>
+<p class="text-xs text-slate-400 mb-2">完整詞彙表——含所有詳細資料</p>
+<button class="btn btn-gold w-full justify-center text-xs" onclick="exportTable()">🖨️ Print</button>
+</div>
+<div class="bg-slate-800 rounded-xl p-4 border border-slate-700 hover:border-yellow-400 transition">
+<div class="text-3xl mb-2">📝</div>
+<h3 class="text-sm font-bold text-white mb-1">Self-Test Quiz</h3>
+<p class="text-xs text-slate-400 mb-2">填空+配對+拼字測驗（附答案）</p>
+<button class="btn btn-gold w-full justify-center text-xs" onclick="exportQuiz()">🖨️ Print</button>
+</div>
+<div class="bg-slate-800 rounded-xl p-4 border border-slate-700 hover:border-yellow-400 transition">
+<div class="text-3xl mb-2">📖</div>
+<h3 class="text-sm font-bold text-white mb-1">Mini Dictionary</h3>
+<p class="text-xs text-slate-400 mb-2">A-Z排序精簡字典，隨身查閱</p>
+<button class="btn btn-gold w-full justify-center text-xs" onclick="exportMiniDict()">🖨️ Print</button>
+</div>
+</div>
+<div class="text-center mb-5">
+<button class="btn btn-gold text-sm px-6 py-2.5" onclick="exportAll()">📦 Export ALL-IN-ONE</button>
+</div>
+</div>
+</div>
+
+</div>
+
+<div id="printZone"><div class="print-page"><div class="p-title">📖 Mini Dictionary — Environment B2 (A–Z)</div><div class="p-subtitle">30 words</div><div style="columns:2;column-gap:16px;font-size:9.5pt;line-height:1.3"><div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">A</div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">acid rain</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ˈæs.ɪd reɪn/</span> — <span style="font-weight:700;color:#b45309">酸雨</span><br><span style="font-size:8pt;color:#475569;font-style:italic">rain that contains a high level of acid from industrial pollution</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">awareness</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/əˈweə.nəs/</span> — <span style="font-weight:700;color:#b45309">意識；認知</span><br><span style="font-size:8pt;color:#475569;font-style:italic">knowledge or understanding of a particular subject or situation</span></div><div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">B</div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">biodiversity</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ˌbaɪ.əʊ.daɪˈvɜː.sə.ti/</span> — <span style="font-weight:700;color:#b45309">生物多樣性</span><br><span style="font-size:8pt;color:#475569;font-style:italic">the variety of plant and animal life in the world or in a particular habitat</span></div><div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">C</div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">carbon footprint</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ˌkɑː.bən ˈfʊt.prɪnt/</span> — <span style="font-weight:700;color:#b45309">碳足跡</span><br><span style="font-size:8pt;color:#475569;font-style:italic">the amount of carbon dioxide that your activities produce</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">climate change</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ˈklaɪ.mət tʃeɪndʒ/</span> — <span style="font-weight:700;color:#b45309">氣候變化</span><br><span style="font-size:8pt;color:#475569;font-style:italic">the long-term changes in the Earth's weather patterns</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">conservation</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ˌkɒn.səˈveɪ.ʃən/</span> — <span style="font-weight:700;color:#b45309">保育；保護</span><br><span style="font-size:8pt;color:#475569;font-style:italic">the protection of animals, plants, and natural resources</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">conserve</span> <span style="font-size:7.5pt;color:#6366f1">v.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/kənˈsɜːv/</span> — <span style="font-weight:700;color:#b45309">節約；保存</span><br><span style="font-size:8pt;color:#475569;font-style:italic">to use as little of something as possible to make it last longer</span></div><div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">D</div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">deforestation</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/diːˌfɒr.ɪˈsteɪ.ʃən/</span> — <span style="font-weight:700;color:#b45309">砍伐森林</span><br><span style="font-size:8pt;color:#475569;font-style:italic">the action of cutting down or burning all the trees in an area</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">disposable</span> <span style="font-size:7.5pt;color:#6366f1">adj.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/dɪˈspəʊ.zə.bl/</span> — <span style="font-weight:700;color:#b45309">一次性的；即棄的</span><br><span style="font-size:8pt;color:#475569;font-style:italic">designed to be thrown away after being used only once</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">drought</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/draʊt/</span> — <span style="font-weight:700;color:#b45309">旱災；乾旱</span><br><span style="font-size:8pt;color:#475569;font-style:italic">a long period of time when there is little or no rain</span></div><div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">E</div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">ecosystem</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ˈiː.kəʊˌsɪs.təm/</span> — <span style="font-weight:700;color:#b45309">生態系統</span><br><span style="font-size:8pt;color:#475569;font-style:italic">all the living things in an area and the way they affect each other and the environment</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">emissions</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ɪˈmɪʃ.ənz/</span> — <span style="font-weight:700;color:#b45309">排放（物）</span><br><span style="font-size:8pt;color:#475569;font-style:italic">the production and discharge of gas or radiation</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">endangered species</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ɪnˌdeɪn.dʒəd ˈspiː.ʃiːz/</span> — <span style="font-weight:700;color:#b45309">瀕危物種</span><br><span style="font-size:8pt;color:#475569;font-style:italic">a type of animal or plant that might soon disappear from the world</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">environment</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ɪnˈvaɪ.rən.mənt/</span> — <span style="font-weight:700;color:#b45309">環境</span><br><span style="font-size:8pt;color:#475569;font-style:italic">the air, land, and water where people, animals, and plants live</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">extinction</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ɪkˈstɪŋk.ʃən/</span> — <span style="font-weight:700;color:#b45309">滅絕</span><br><span style="font-size:8pt;color:#475569;font-style:italic">a situation in which a type of animal or plant no longer exists</span></div><div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">F</div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">flood</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/flʌd/</span> — <span style="font-weight:700;color:#b45309">洪水；水災</span><br><span style="font-size:8pt;color:#475569;font-style:italic">a large amount of water covering an area that is usually dry</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">fossil fuels</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ˈfɒs.əl fjʊəlz/</span> — <span style="font-weight:700;color:#b45309">化石燃料</span><br><span style="font-size:8pt;color:#475569;font-style:italic">fuels such as coal, oil, and natural gas, formed from the remains of dead plants and animals</span></div><div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">G</div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">global warming</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ˌɡləʊ.bəl ˈwɔː.mɪŋ/</span> — <span style="font-weight:700;color:#b45309">全球暖化</span><br><span style="font-size:8pt;color:#475569;font-style:italic">the increase in the world's temperature, caused by greenhouse gases</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">greenhouse effect</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ˈɡriːn.haʊs ɪˌfekt/</span> — <span style="font-weight:700;color:#b45309">溫室效應</span><br><span style="font-size:8pt;color:#475569;font-style:italic">the process where heat from the sun is trapped in the Earth's atmosphere</span></div><div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">H</div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">habitat</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ˈhæb.ɪ.tæt/</span> — <span style="font-weight:700;color:#b45309">棲息地</span><br><span style="font-size:8pt;color:#475569;font-style:italic">the natural home or environment of an animal, plant, or other organism</span></div><div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">I</div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">impact</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ˈɪm.pækt/</span> — <span style="font-weight:700;color:#b45309">影響；衝擊</span><br><span style="font-size:8pt;color:#475569;font-style:italic">the powerful effect that something has on a situation or person</span></div><div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">O</div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">organic</span> <span style="font-size:7.5pt;color:#6366f1">adj.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ɔːˈɡæn.ɪk/</span> — <span style="font-weight:700;color:#b45309">有機的</span><br><span style="font-size:8pt;color:#475569;font-style:italic">produced without the use of artificial chemicals</span></div><div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">P</div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">pollute</span> <span style="font-size:7.5pt;color:#6366f1">v.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/pəˈluːt/</span> — <span style="font-weight:700;color:#b45309">污染</span><br><span style="font-size:8pt;color:#475569;font-style:italic">to add harmful substances to the air, water, or land</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">pollution</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/pəˈluː.ʃən/</span> — <span style="font-weight:700;color:#b45309">污染</span><br><span style="font-size:8pt;color:#475569;font-style:italic">the process of making air, water, or land dirty and dangerous</span></div><div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">R</div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">recycle</span> <span style="font-size:7.5pt;color:#6366f1">v.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/riːˈsaɪ.kl/</span> — <span style="font-weight:700;color:#b45309">回收再造</span><br><span style="font-size:8pt;color:#475569;font-style:italic">to process used materials so they can be used again</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">renewable energy</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/rɪˌnjuː.ə.bəl ˈen.ə.dʒi/</span> — <span style="font-weight:700;color:#b45309">可再生能源</span><br><span style="font-size:8pt;color:#475569;font-style:italic">energy from a source that is not depleted when used, such as wind or solar power</span></div><div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">S</div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">solar power</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ˌsəʊ.lər ˈpaʊ.ər/</span> — <span style="font-weight:700;color:#b45309">太陽能</span><br><span style="font-size:8pt;color:#475569;font-style:italic">energy that uses the power of the sun to produce electricity</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">sustainable</span> <span style="font-size:7.5pt;color:#6366f1">adj.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/səˈsteɪ.nə.bl/</span> — <span style="font-weight:700;color:#b45309">可持續的</span><br><span style="font-size:8pt;color:#475569;font-style:italic">involving methods that do not completely use up or destroy natural resources</span></div><div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">W</div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">waste</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/weɪst/</span> — <span style="font-weight:700;color:#b45309">廢物；浪費</span><br><span style="font-size:8pt;color:#475569;font-style:italic">unwanted material or substances left after you have used something</span></div><div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">wind farm</span> <span style="font-size:7.5pt;color:#6366f1">n.</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">/ˈwɪnd fɑːm/</span> — <span style="font-weight:700;color:#b45309">風力發電場</span><br><span style="font-size:8pt;color:#475569;font-style:italic">a group of large windmills used for producing electricity</span></div></div></div></div>
+
+<script>
+/* ═══════════ AUDIO SYSTEM (Web Audio API — works through Google Meet tab sharing) ═══════════ */
+let audioCtx;
+function initAudio(){
+ if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+ if(audioCtx.state==='suspended')audioCtx.resume();
+}
+function playTone(freq,dur,type='sine',vol=0.25){
+ initAudio();const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+ o.connect(g);g.connect(audioCtx.destination);o.type=type;o.frequency.value=freq;
+ g.gain.setValueAtTime(vol,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+dur);
+ o.start();o.stop(audioCtx.currentTime+dur);
+}
+function sfxCorrect(){playTone(523,.12);setTimeout(()=>playTone(659,.12),80);setTimeout(()=>playTone(784,.25),160);}
+function sfxWrong(){playTone(300,.25,'sawtooth',.18);setTimeout(()=>playTone(220,.35,'sawtooth',.12),120);}
+function sfxFlip(){playTone(1200,.04,'sine',.1);}
+function sfxTick(){playTone(900,.03,'square',.08);}
+function sfxBoom(){
+ initAudio();const buf=audioCtx.createBuffer(1,audioCtx.sampleRate*.4,audioCtx.sampleRate);
+ const d=buf.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,1.5);
+ const s=audioCtx.createBufferSource(),g=audioCtx.createGain();s.buffer=buf;s.connect(g);g.connect(audioCtx.destination);
+ g.gain.setValueAtTime(.5,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.4);s.start();
+}
+function sfxDefuse(){playTone(523,.1);setTimeout(()=>playTone(659,.1),70);setTimeout(()=>playTone(784,.1),140);setTimeout(()=>playTone(1047,.3),210);}
+function sfxWin(){for(let i=0;i<5;i++)setTimeout(()=>playTone(523+i*80,.15,'sine',.15),i*80);}
+
+/* ═══════════ TTS — BRITISH ACCENT ═══════════ */
+let voicesLoaded=false;
+function loadVoices(){speechSynthesis.getVoices();voicesLoaded=true;}
+if('speechSynthesis' in window){speechSynthesis.onvoiceschanged=loadVoices;loadVoices();}
+
+function speak(text){
+ if(!('speechSynthesis' in window))return;
+ speechSynthesis.cancel();
+ const u=new SpeechSynthesisUtterance(text);u.lang='en-GB';u.rate=0.78;u.pitch=1;
+ const vs=speechSynthesis.getVoices();
+ const pick=vs.find(v=>/Google UK English Female/i.test(v.name))
+  ||vs.find(v=>/Google UK English/i.test(v.name))
+  ||vs.find(v=>/Daniel/i.test(v.name)&&v.lang==='en-GB')
+  ||vs.find(v=>/Kate/i.test(v.name)&&v.lang==='en-GB')
+  ||vs.find(v=>v.lang==='en-GB')
+  ||vs.find(v=>v.lang.startsWith('en'));
+ if(pick)u.voice=pick;
+ speechSynthesis.speak(u);
+}
+
+function confetti(x,y){
+ const cols=['#fbbf24','#22c55e','#a855f7','#ef4444','#3b82f6','#ec4899'];
+ for(let i=0;i<16;i++){const p=document.createElement('div');p.className='confetti-piece';
+ p.style.left=(x+Math.random()*50-25)+'px';p.style.top=(y+Math.random()*20-10)+'px';
+ p.style.background=cols[i%cols.length];p.style.animationDuration=(.7+Math.random()*.7)+'s';
+ document.body.appendChild(p);setTimeout(()=>p.remove(),1500);}
+}
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+
+/* ═══════════ SVG ILLUSTRATIONS ═══════════ */
+function getSVG(key){
+const S={
+'acid rain':`<rect width="200" height="140" rx="10" fill="#1e293b"/><ellipse cx="100" cy="30" rx="55" ry="18" fill="#64748b"/><ellipse cx="65" cy="33" rx="35" ry="15" fill="#64748b"/><ellipse cx="135" cy="33" rx="35" ry="15" fill="#64748b"/><path d="M60,58 L57,72 A4,4,0,0,0,63,72Z" fill="#a3e635"/><path d="M90,55 L87,69 A4,4,0,0,0,93,69Z" fill="#bef264"/><path d="M120,58 L117,72 A4,4,0,0,0,123,72Z" fill="#a3e635"/><path d="M75,75 L72,86 A3,3,0,0,0,78,86Z" fill="#84cc16"/><path d="M105,73 L102,84 A3,3,0,0,0,108,84Z" fill="#bef264"/><rect x="96" y="95" width="8" height="30" rx="2" fill="#78350f"/><line x1="100" y1="102" x2="86" y2="94" stroke="#78350f" stroke-width="2.5"/><line x1="100" y1="110" x2="114" y2="102" stroke="#78350f" stroke-width="2.5"/>`,
+'awareness':`<rect width="200" height="140" rx="10" fill="#312e81"/><circle cx="100" cy="65" r="35" fill="#4338ca"/><circle cx="100" cy="58" r="22" fill="#6366f1"/><line x1="100" y1="36" x2="100" y2="20" stroke="#fbbf24" stroke-width="3"/><line x1="120" y1="42" x2="132" y2="28" stroke="#fbbf24" stroke-width="2.5"/><line x1="80" y1="42" x2="68" y2="28" stroke="#fbbf24" stroke-width="2.5"/><line x1="127" y1="58" x2="142" y2="58" stroke="#fbbf24" stroke-width="2.5"/><line x1="73" y1="58" x2="58" y2="58" stroke="#fbbf24" stroke-width="2.5"/><circle cx="100" cy="55" r="8" fill="#fbbf24"/><circle cx="100" cy="55" r="3" fill="#312e81"/><rect x="91" y="80" width="18" height="25" rx="4" fill="#4338ca" stroke="#6366f1" stroke-width="1.5"/>`,
+'biodiversity':`<rect width="200" height="140" rx="10" fill="#064e3b"/><circle cx="50" cy="75" r="18" fill="#059669"/><path d="M50,57 L48,45 Q50,38,52,45Z" fill="#34d399"/><ellipse cx="45" cy="72" rx="4" ry="3" fill="#fff"/><circle cx="44" cy="72" r="1.5" fill="#000"/><path d="M130,40 L120,55 L140,55Z" fill="#22d3ee"/><path d="M130,40 L125,50 L128,48Z" fill="#0891b2"/><path d="M115,90 Q130,70,145,90 Q130,110,115,90Z" fill="#f97316"/><circle cx="130" cy="90" r="3" fill="#000"/><path d="M70,110 Q80,100,90,108 Q80,116,70,110Z" fill="#a855f7"/><path d="M80,108 L80,120" stroke="#6b21a8" stroke-width="1.5"/><path d="M155,65 L165,55 Q170,52,168,60Z" fill="#4ade80"/>`,
+'carbon footprint':`<rect width="200" height="140" rx="10" fill="#292524"/><path d="M80,35 Q80,20,90,20 Q95,15,100,20 Q110,15,115,22 Q125,20,125,35 Q130,38,125,45 Q120,50,110,48 Q105,55,95,50 Q85,55,82,48 Q75,48,75,40Z" fill="#57534e" opacity=".6"/><path d="M75,110 Q75,75,85,65 Q95,55,100,65 Q100,55,110,65 Q120,75,120,110Z" fill="#78716c"/><ellipse cx="97" cy="115" rx="28" ry="8" fill="#57534e"/><text x="97" y="95" text-anchor="middle" font-size="16" font-weight="900" fill="#fbbf24">CO₂</text>`,
+'climate change':`<rect width="200" height="140" rx="10" fill="#1e3a5f"/><rect x="90" y="20" width="20" height="90" rx="8" fill="#e2e8f0" opacity=".9"/><rect x="94" y="45" width="12" height="61" rx="4" fill="#ef4444"/><circle cx="100" cy="100" r="12" fill="#ef4444"/><path d="M120,40 L140,25" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/><path d="M135,25 L140,25 L140,30" stroke="#fbbf24" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="45" cy="40" r="20" fill="#3b82f6" opacity=".5"/><path d="M35,38 Q45,30,55,38 Q50,35,45,38" fill="#93c5fd"/><circle cx="155" cy="40" r="20" fill="#dc2626" opacity=".5"/><path d="M145,42 L155,32 L165,42" fill="none" stroke="#fca5a5" stroke-width="2"/>`,
+'conservation':`<rect width="200" height="140" rx="10" fill="#14532d"/><path d="M70,95 Q65,60,80,50 Q90,44,100,55" fill="none" stroke="#86efac" stroke-width="3"/><path d="M130,95 Q135,60,120,50 Q110,44,100,55" fill="none" stroke="#86efac" stroke-width="3"/><path d="M75,100 Q60,85,65,75" fill="none" stroke="#86efac" stroke-width="2.5"/><path d="M125,100 Q140,85,135,75" fill="none" stroke="#86efac" stroke-width="2.5"/><ellipse cx="100" cy="55" rx="12" ry="16" fill="#22c55e"/><line x1="100" y1="71" x2="100" y2="90" stroke="#15803d" stroke-width="2.5"/><path d="M95,78 L88,72" stroke="#15803d" stroke-width="2"/><path d="M105,82 L112,76" stroke="#15803d" stroke-width="2"/><circle cx="100" cy="42" r="5" fill="#fbbf24"/>`,
+'conserve':`<rect width="200" height="140" rx="10" fill="#0c4a6e"/><path d="M100,25 L93,50 A8,8,0,0,0,107,50Z" fill="#38bdf8"/><path d="M100,25 L96,42 A5,5,0,0,0,104,42Z" fill="#7dd3fc"/><circle cx="100" cy="80" r="25" fill="none" stroke="#0ea5e9" stroke-width="3" stroke-dasharray="8,4"/><path d="M90,68 L95,63 L100,68 L105,63 L110,68" fill="none" stroke="#22d3ee" stroke-width="2"/><rect x="93" y="95" width="14" height="20" rx="3" fill="#0369a1"/><path d="M85,115 L115,115" stroke="#0ea5e9" stroke-width="2"/>`,
+'deforestation':`<rect width="200" height="140" rx="10" fill="#422006"/><rect x="28" y="80" width="14" height="25" rx="2" fill="#78350f"/><path d="M23,80 L42,80" stroke="#92400e" stroke-width="3"/><circle cx="35" cy="80" r="8" fill="none" stroke="#a16207" stroke-width="5" stroke-dasharray="3,4"/><rect x="80" y="70" width="14" height="35" rx="2" fill="#78350f"/><path d="M75,70 L94,70" stroke="#92400e" stroke-width="3"/><circle cx="87" cy="70" r="10" fill="none" stroke="#a16207" stroke-width="5" stroke-dasharray="3,5"/><rect x="135" y="75" width="12" height="30" rx="2" fill="#78350f"/><path d="M130,75 L147,75" stroke="#92400e" stroke-width="3"/><path d="M160,60 L170,90 L175,70 Z" fill="#dc2626"/><rect x="168" y="70" width="4" height="35" fill="#92400e"/>`,
+'disposable':`<rect width="200" height="140" rx="10" fill="#1e293b"/><path d="M60,35 L65,105 A8,5,0,0,0,95,105 L100,35Z" fill="#e2e8f0" opacity=".8"/><ellipse cx="80" cy="35" rx="20" ry="6" fill="#f1f5f9"/><path d="M115,45 L120,110 A6,4,0,0,0,145,110 L140,70 A10,10,0,0,0,115,70Z" fill="#e2e8f0" opacity=".7"/><line x1="45" y1="30" x2="155" y2="120" stroke="#ef4444" stroke-width="5" stroke-linecap="round"/><line x1="155" y1="30" x2="45" y2="120" stroke="#ef4444" stroke-width="5" stroke-linecap="round"/>`,
+'drought':`<rect width="200" height="140" rx="10" fill="#78350f"/><circle cx="155" cy="35" r="22" fill="#fbbf24" opacity=".8"/><path d="M10,95 L40,90 L60,96 L90,88 L120,95 L150,89 L190,95 L190,140 L10,140Z" fill="#92400e"/><line x1="30" y1="95" x2="50" y2="108" stroke="#78350f" stroke-width="1.5"/><line x1="80" y1="92" x2="70" y2="110" stroke="#78350f" stroke-width="1.5"/><line x1="120" y1="93" x2="140" y2="108" stroke="#78350f" stroke-width="1.5"/><line x1="100" y1="80" x2="100" y2="55" stroke="#57534e" stroke-width="3"/><path d="M95,65 L85,70" stroke="#57534e" stroke-width="2"/><path d="M105,60 L115,55" stroke="#57534e" stroke-width="2"/>`,
+'ecosystem':`<rect width="200" height="140" rx="10" fill="#0f172a"/><circle cx="100" cy="70" r="45" fill="none" stroke="#334155" stroke-width="2"/><circle cx="100" cy="28" r="12" fill="#fbbf24"/><path d="M60,98 L65,82 Q67,78,70,82Z" fill="#22c55e"/><path d="M70,98 L73,85 Q75,80,77,85Z" fill="#16a34a"/><circle cx="140" cy="85" r="10" fill="#38bdf8" opacity=".6"/><path d="M135,82 Q140,75,145,82" fill="none" stroke="#7dd3fc" stroke-width="1.5"/><path d="M100,28 L65,90" stroke="#fbbf2466" stroke-width="1" stroke-dasharray="3,3"/><path d="M65,90 L140,85" stroke="#22c55e66" stroke-width="1" stroke-dasharray="3,3"/><path d="M140,85 L100,28" stroke="#38bdf866" stroke-width="1" stroke-dasharray="3,3"/>`,
+'emissions':`<rect width="200" height="140" rx="10" fill="#1c1917"/><rect x="60" y="70" width="60" height="50" rx="3" fill="#57534e"/><rect x="75" y="45" width="14" height="35" rx="2" fill="#78716c"/><rect x="100" y="55" width="12" height="25" rx="2" fill="#78716c"/><ellipse cx="82" cy="38" rx="12" ry="8" fill="#6b7280" opacity=".7"/><ellipse cx="82" cy="28" rx="9" ry="6" fill="#6b7280" opacity=".5"/><ellipse cx="85" cy="18" rx="7" ry="5" fill="#6b7280" opacity=".3"/><ellipse cx="106" cy="48" rx="10" ry="7" fill="#6b7280" opacity=".6"/><ellipse cx="108" cy="38" rx="8" ry="5" fill="#6b7280" opacity=".4"/><rect x="65" y="82" width="12" height="12" rx="1" fill="#fbbf24" opacity=".3"/><rect x="83" y="82" width="12" height="12" rx="1" fill="#fbbf24" opacity=".3"/>`,
+'endangered species':`<rect width="200" height="140" rx="10" fill="#1e1b4b"/><ellipse cx="100" cy="65" rx="30" ry="28" fill="#fff"/><ellipse cx="86" cy="50" rx="12" ry="10" fill="#000"/><ellipse cx="114" cy="50" rx="12" ry="10" fill="#000"/><ellipse cx="88" cy="50" rx="5" ry="5" fill="#fff"/><ellipse cx="112" cy="50" rx="5" ry="5" fill="#fff"/><circle cx="88" cy="50" r="2.5" fill="#000"/><circle cx="112" cy="50" r="2.5" fill="#000"/><ellipse cx="100" cy="68" rx="6" ry="4" fill="#1e1b4b"/><path d="M90,75 Q100,82,110,75" fill="none" stroke="#1e1b4b" stroke-width="2"/><path d="M50,20 L60,30 L45,30Z" fill="#ef4444"/><text x="52" y="28" text-anchor="middle" font-size="11" font-weight="900" fill="#fff">!</text><text x="100" y="118" text-anchor="middle" font-size="10" font-weight="700" fill="#ef4444">ENDANGERED</text>`,
+'environment':`<rect width="200" height="140" rx="10" fill="#0c4a6e"/><circle cx="100" cy="65" r="38" fill="#1d4ed8"/><path d="M80,45 Q75,55,85,60 Q75,70,82,80 Q95,75,100,80 Q110,75,115,82 Q125,72,118,60 Q125,50,115,45 Q108,50,100,45Z" fill="#22c55e"/><path d="M100,80 Q90,85,95,95 L105,95 Q110,85,100,80" fill="#15803d"/><circle cx="145" cy="30" r="8" fill="#fbbf24" opacity=".7"/><path d="M72,52 Q78,48,82,52" fill="#16a34a"/><path d="M105,55 Q112,50,118,55" fill="#16a34a"/>`,
+'extinction':`<rect width="200" height="140" rx="10" fill="#1c1917"/><ellipse cx="100" cy="50" rx="22" ry="16" fill="#d6d3d1"/><circle cx="90" cy="46" r="5" fill="#1c1917"/><circle cx="110" cy="46" r="5" fill="#1c1917"/><path d="M88,58 L95,55 L100,58 L105,55 L112,58" fill="none" stroke="#1c1917" stroke-width="2"/><path d="M80,66 L70,90 L85,85 L90,100 L100,80 L110,100 L115,85 L130,90 L120,66" fill="#d6d3d1"/><line x1="60" y1="30" x2="75" y2="15" stroke="#ef4444" stroke-width="3"/><line x1="75" y1="30" x2="60" y2="15" stroke="#ef4444" stroke-width="3"/><line x1="125" y1="30" x2="140" y2="15" stroke="#ef4444" stroke-width="3"/><line x1="140" y1="30" x2="125" y2="15" stroke="#ef4444" stroke-width="3"/>`,
+'flood':`<rect width="200" height="140" rx="10" fill="#1e3a5f"/><path d="M70,50 L70,85 L130,85 L130,50 L110,35 L90,35Z" fill="#94a3b8"/><rect x="85" y="55" width="12" height="12" rx="1" fill="#60a5fa" opacity=".5"/><rect x="103" y="55" width="12" height="12" rx="1" fill="#60a5fa" opacity=".5"/><rect x="92" y="72" width="16" height="13" rx="1" fill="#78350f"/><path d="M10,80 Q30,72,50,80 Q70,88,90,80 Q110,72,130,80 Q150,88,170,80 Q190,72,200,80 L200,140 L0,140Z" fill="#3b82f6" opacity=".7"/><path d="M10,90 Q30,82,50,90 Q70,98,90,90 Q110,82,130,90 Q150,98,170,90 Q190,82,200,90 L200,140 L0,140Z" fill="#2563eb" opacity=".8"/>`,
+'fossil fuels':`<rect width="200" height="140" rx="10" fill="#1c1917"/><path d="M80,90 Q80,55,100,45 Q120,55,120,90Z" fill="#292524"/><path d="M90,85 Q90,65,100,58 Q110,65,110,85Z" fill="#f97316"/><path d="M95,85 Q95,72,100,67 Q105,72,105,85Z" fill="#fbbf24"/><rect x="70" y="88" width="60" height="25" rx="5" fill="#57534e"/><text x="100" y="105" text-anchor="middle" font-size="11" font-weight="900" fill="#fbbf24">OIL</text><path d="M140,50 L145,25 L150,50" fill="none" stroke="#ef4444" stroke-width="2"/><path d="M145,25 L148,35" stroke="#f97316" stroke-width="2"/>`,
+'global warming':`<rect width="200" height="140" rx="10" fill="#450a0a"/><circle cx="100" cy="65" r="35" fill="#1d4ed8"/><path d="M80,48 Q90,40,100,48 Q110,40,120,48 Q115,55,108,50 Q100,58,92,50 Q85,55,80,48Z" fill="#22c55e"/><path d="M75,70 Q85,65,95,72 Q105,65,115,72 Q120,80,100,85 Q80,80,75,70Z" fill="#22c55e"/><path d="M65,40 L58,28" stroke="#ef4444" stroke-width="2"/><path d="M135,40 L142,28" stroke="#ef4444" stroke-width="2"/><path d="M100,28 L100,16" stroke="#ef4444" stroke-width="2"/><path d="M70,90 L62,102" stroke="#ef4444" stroke-width="2"/><path d="M130,90 L138,102" stroke="#ef4444" stroke-width="2"/><text x="100" y="128" text-anchor="middle" font-size="12" font-weight="900" fill="#ef4444">+2°C</text>`,
+'greenhouse effect':`<rect width="200" height="140" rx="10" fill="#1e293b"/><path d="M40,110 Q40,30,100,30 Q160,30,160,110Z" fill="none" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,3"/><line x1="100" y1="30" x2="100" y2="110" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4"/><path d="M70,30 Q70,70,70,110" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,4"/><path d="M130,30 Q130,70,130,110" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,4"/><circle cx="50" cy="15" r="10" fill="#fbbf24"/><path d="M60,18 L80,40" stroke="#fbbf24" stroke-width="2"/><path d="M80,40 L65,55" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,2"/><path d="M65,55 L80,70" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,2"/><path d="M120,50 L135,35" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,2"/><rect x="85" y="90" width="10" height="20" rx="1" fill="#78350f"/><path d="M75,90 Q90,70,105,90Z" fill="#22c55e"/>`,
+'habitat':`<rect width="200" height="140" rx="10" fill="#14532d"/><path d="M40,110 Q60,80,80,90 Q100,70,120,85 Q140,75,160,110Z" fill="#166534"/><path d="M50,110 L50,70 Q60,55,70,70 L70,110" fill="#15803d"/><path d="M45,70 Q60,50,75,70" fill="#22c55e"/><path d="M110,110 L110,60 Q125,40,140,60 L140,110" fill="#15803d"/><path d="M105,60 Q125,35,145,60" fill="#22c55e"/><circle cx="85" cy="95" r="8" fill="#92400e"/><circle cx="85" cy="88" r="6" fill="#a16207"/><circle cx="83" cy="87" r="1.5" fill="#000"/><path d="M90,100 L95,110" stroke="#92400e" stroke-width="2"/>`,
+'impact':`<rect width="200" height="140" rx="10" fill="#1e1b4b"/><circle cx="100" cy="65" r="12" fill="#fbbf24"/><path d="M100,53 L96,30 L104,30Z" fill="#fbbf24"/><line x1="75" y1="45" x2="60" y2="30" stroke="#f97316" stroke-width="3" stroke-linecap="round"/><line x1="125" y1="45" x2="140" y2="30" stroke="#f97316" stroke-width="3" stroke-linecap="round"/><line x1="72" y1="70" x2="50" y2="75" stroke="#f97316" stroke-width="3" stroke-linecap="round"/><line x1="128" y1="70" x2="150" y2="75" stroke="#f97316" stroke-width="3" stroke-linecap="round"/><line x1="85" y1="85" x2="70" y2="100" stroke="#f97316" stroke-width="3" stroke-linecap="round"/><line x1="115" y1="85" x2="130" y2="100" stroke="#f97316" stroke-width="3" stroke-linecap="round"/><line x1="100" y1="78" x2="100" y2="100" stroke="#f97316" stroke-width="3" stroke-linecap="round"/>`,
+'organic':`<rect width="200" height="140" rx="10" fill="#14532d"/><path d="M85,45 Q100,20,115,45 Q120,60,100,65 Q80,60,85,45Z" fill="#22c55e"/><line x1="100" y1="65" x2="100" y2="95" stroke="#15803d" stroke-width="3"/><path d="M100,75 L88,65" stroke="#15803d" stroke-width="2.5"/><path d="M100,82 L112,72" stroke="#15803d" stroke-width="2.5"/><circle cx="100" cy="45" r="12" fill="none" stroke="#86efac" stroke-width="2.5"/><path d="M95,42 L99,48 L108,38" fill="none" stroke="#86efac" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="100" y="118" text-anchor="middle" font-size="11" font-weight="700" fill="#86efac">100% Natural</text>`,
+'pollute':`<rect width="200" height="140" rx="10" fill="#1e293b"/><rect x="30" y="50" width="35" height="50" rx="3" fill="#78716c"/><rect x="50" y="60" width="40" height="10" rx="3" fill="#78716c"/><path d="M90,65 Q110,55,130,70 Q150,80,170,75" fill="none" stroke="#854d0e" stroke-width="4"/><ellipse cx="120" cy="90" rx="35" ry="15" fill="#854d0e" opacity=".4"/><path d="M105,95 Q115,85,125,95 Q135,85,145,95" fill="none" stroke="#92400e" stroke-width="2"/><circle cx="110" cy="100" r="3" fill="#57534e"/><circle cx="130" cy="103" r="2" fill="#57534e"/><circle cx="145" cy="98" r="2.5" fill="#57534e"/>`,
+'pollution':`<rect width="200" height="140" rx="10" fill="#292524"/><rect x="30" y="80" width="20" height="40" rx="1" fill="#57534e"/><rect x="55" y="70" width="18" height="50" rx="1" fill="#57534e"/><rect x="80" y="85" width="22" height="35" rx="1" fill="#57534e"/><rect x="110" y="75" width="16" height="45" rx="1" fill="#57534e"/><rect x="135" y="65" width="25" height="55" rx="1" fill="#57534e"/><ellipse cx="100" cy="50" rx="70" ry="22" fill="#78716c" opacity=".5"/><ellipse cx="80" cy="38" rx="45" ry="15" fill="#78716c" opacity=".4"/><ellipse cx="120" cy="30" rx="30" ry="10" fill="#78716c" opacity=".3"/>`,
+'recycle':`<rect width="200" height="140" rx="10" fill="#14532d"/><path d="M100,25 L118,55" stroke="#22c55e" stroke-width="6" stroke-linecap="round"/><path d="M112,48 L120,56 L126,48" fill="#22c55e"/><path d="M125,60 L90,60" stroke="#22c55e" stroke-width="6" stroke-linecap="round"/><path d="M97,53 L89,61 L97,69" fill="#22c55e"/><path d="M82,55 L100,85" stroke="#22c55e" stroke-width="6" stroke-linecap="round"/><path d="M107,78 L99,86 L93,78" fill="#22c55e"/><path d="M105,90 L70,90" stroke="#22c55e" stroke-width="6" stroke-linecap="round"/><path d="M77,83 L69,91 L77,99" fill="#22c55e"/><path d="M65,95 L82,120" stroke="#22c55e" stroke-width="6" stroke-linecap="round"/><text x="100" y="120" text-anchor="middle" font-size="11" font-weight="900" fill="#86efac">♻</text>`,
+'renewable energy':`<rect width="200" height="140" rx="10" fill="#0c4a6e"/><circle cx="55" cy="40" r="20" fill="#fbbf24"/><line x1="55" y1="12" x2="55" y2="8" stroke="#fbbf24" stroke-width="2.5"/><line x1="55" y1="68" x2="55" y2="72" stroke="#fbbf24" stroke-width="2.5"/><line x1="27" y1="40" x2="23" y2="40" stroke="#fbbf24" stroke-width="2.5"/><line x1="83" y1="40" x2="87" y2="40" stroke="#fbbf24" stroke-width="2.5"/><rect x="120" y="90" width="6" height="35" rx="1" fill="#94a3b8"/><path d="M123,90 L123,55 L108,85Z" fill="#e2e8f0"/><path d="M123,90 L138,60 L123,55Z" fill="#cbd5e1"/><path d="M123,90 L108,85 L138,60Z" fill="#94a3b8"/><circle cx="123" cy="90" r="4" fill="#64748b"/><path d="M155,95 L155,60 L145,82Z" fill="#e2e8f0" opacity=".6"/><path d="M155,95 L165,68 L155,60Z" fill="#cbd5e1" opacity=".6"/><circle cx="155" cy="95" r="3" fill="#64748b"/>`,
+'solar power':`<rect width="200" height="140" rx="10" fill="#0369a1"/><circle cx="100" cy="30" r="18" fill="#fbbf24"/><line x1="100" y1="6" x2="100" y2="2" stroke="#fbbf24" stroke-width="2"/><line x1="118" y1="14" x2="122" y2="10" stroke="#fbbf24" stroke-width="2"/><line x1="82" y1="14" x2="78" y2="10" stroke="#fbbf24" stroke-width="2"/><rect x="55" y="75" width="90" height="45" rx="4" fill="#1e3a5f" stroke="#60a5fa" stroke-width="2"/><line x1="85" y1="75" x2="85" y2="120" stroke="#60a5fa" stroke-width="1.5"/><line x1="115" y1="75" x2="115" y2="120" stroke="#60a5fa" stroke-width="1.5"/><line x1="55" y1="90" x2="145" y2="90" stroke="#60a5fa" stroke-width="1.5"/><line x1="55" y1="105" x2="145" y2="105" stroke="#60a5fa" stroke-width="1.5"/><line x1="100" y1="48" x2="80" y2="75" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4,2"/><line x1="100" y1="48" x2="120" y2="75" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4,2"/>`,
+'sustainable':`<rect width="200" height="140" rx="10" fill="#14532d"/><path d="M60,70 Q60,40,100,40 Q140,40,140,70 Q140,100,100,100 Q60,100,60,70Z" fill="none" stroke="#22c55e" stroke-width="4"/><path d="M133,52 L143,42" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/><path d="M137,42 L143,42 L143,48" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round"/><path d="M90,60 Q100,45,110,60 Q115,70,100,75 Q85,70,90,60Z" fill="#22c55e"/><line x1="100" y1="75" x2="100" y2="90" stroke="#15803d" stroke-width="2.5"/><path d="M95,82 L90,78" stroke="#15803d" stroke-width="2"/><path d="M105,85 L110,81" stroke="#15803d" stroke-width="2"/>`,
+'waste':`<rect width="200" height="140" rx="10" fill="#292524"/><rect x="70" y="45" width="60" height="65" rx="5" fill="#57534e"/><rect x="65" y="38" width="70" height="12" rx="4" fill="#78716c"/><rect x="95" y="30" width="10" height="12" rx="3" fill="#78716c"/><rect x="80" y="58" width="40" height="3" rx="1" fill="#a8a29e" opacity=".3"/><rect x="80" y="68" width="40" height="3" rx="1" fill="#a8a29e" opacity=".3"/><rect x="80" y="78" width="40" height="3" rx="1" fill="#a8a29e" opacity=".3"/><path d="M55,42 Q50,35,55,30 L58,28" stroke="#78716c" stroke-width="2" fill="none"/><path d="M145,42 Q150,35,145,30 L142,28" stroke="#78716c" stroke-width="2" fill="none"/><rect x="82" y="88" width="8" height="12" rx="1" fill="#ef4444" opacity=".5"/><circle cx="105" cy="94" r="5" fill="#fbbf24" opacity=".4"/><rect x="112" y="90" width="6" height="8" rx="1" fill="#3b82f6" opacity=".4"/>`,
+'wind farm':`<rect width="200" height="140" rx="10" fill="#0f766e"/><path d="M0,110 Q50,95,100,105 Q150,95,200,110 L200,140 L0,140Z" fill="#166534"/><rect x="48" y="55" width="4" height="55" rx="1" fill="#e2e8f0"/><path d="M50,55 L50,25 L35,50Z" fill="#f1f5f9"/><path d="M50,55 L65,38 L50,25Z" fill="#cbd5e1"/><path d="M50,55 L35,50 L65,38Z" fill="#94a3b8"/><circle cx="50" cy="55" r="3" fill="#64748b"/><rect x="108" y="48" width="4" height="60" rx="1" fill="#e2e8f0"/><path d="M110,48 L110,18 L95,43Z" fill="#f1f5f9"/><path d="M110,48 L125,32 L110,18Z" fill="#cbd5e1"/><path d="M110,48 L95,43 L125,32Z" fill="#94a3b8"/><circle cx="110" cy="48" r="3" fill="#64748b"/><rect x="158" y="58" width="4" height="50" rx="1" fill="#e2e8f0"/><path d="M160,58 L160,32 L148,53Z" fill="#f1f5f9"/><path d="M160,58 L172,44 L160,32Z" fill="#cbd5e1"/><circle cx="160" cy="58" r="3" fill="#64748b"/>`
+};
+return `<svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">${S[key]||'<rect width="200" height="140" rx="10" fill="#334155"/><text x="100" y="75" text-anchor="middle" font-size="14" fill="#94a3b8">${key}</text>'}</svg>`;
+}
+
+/* ═══════════ VOCAB DATA ═══════════ */
+const CAT_NAMES={1:"Climate & Weather",2:"Energy & Emissions",3:"Nature & Life",4:"Protect & Act"};
+const CAT_ICONS={1:"🌡️",2:"⚡",3:"🌿",4:"♻️"};
+const CAT_COLORS={1:["#1e3a5f","#3b82f6"],2:["#78350f","#f97316"],3:["#14532d","#22c55e"],4:["#4c1d95","#a78bfa"]};
+
+// [word, ipa, pos, cefr, cat, zh, definition, exEn]
+const W=[
+["acid rain","/ˈæs.ɪd reɪn/","n.","B2",1,"酸雨","rain that contains a high level of acid from industrial pollution","Acid rain can cause serious damage to forests and lakes."],
+["climate change","/ˈklaɪ.mət tʃeɪndʒ/","n.","B2",1,"氣候變化","the long-term changes in the Earth's weather patterns","Climate change is causing more extreme weather events."],
+["drought","/draʊt/","n.","B2",1,"旱災；乾旱","a long period of time when there is little or no rain","The severe drought led to crop failure and water shortages."],
+["flood","/flʌd/","n.","B2",1,"洪水；水災","a large amount of water covering an area that is usually dry","Heavy rain caused a major flood in the town centre."],
+["global warming","/ˌɡləʊ.bəl ˈwɔː.mɪŋ/","n.","B2",1,"全球暖化","the increase in the world's temperature, caused by greenhouse gases","Melting ice caps are a direct consequence of global warming."],
+["greenhouse effect","/ˈɡriːn.haʊs ɪˌfekt/","n.","B2",1,"溫室效應","the process where heat from the sun is trapped in the Earth's atmosphere","The greenhouse effect is the main cause of global warming."],
+["carbon footprint","/ˌkɑː.bən ˈfʊt.prɪnt/","n.","B2",2,"碳足跡","the amount of carbon dioxide that your activities produce","Flying has a very large carbon footprint."],
+["emissions","/ɪˈmɪʃ.ənz/","n.","B2",2,"排放（物）","the production and discharge of gas or radiation","The government has pledged to cut carbon emissions by 50%."],
+["fossil fuels","/ˈfɒs.əl fjʊəlz/","n.","B2",2,"化石燃料","fuels such as coal, oil, and natural gas, formed from the remains of dead plants and animals","The world is too dependent on burning fossil fuels for energy."],
+["renewable energy","/rɪˌnjuː.ə.bəl ˈen.ə.dʒi/","n.","B2",2,"可再生能源","energy from a source that is not depleted when used, such as wind or solar power","The government is investing more in renewable energy like solar and wind farms."],
+["solar power","/ˌsəʊ.lər ˈpaʊ.ər/","n.","B2",2,"太陽能","energy that uses the power of the sun to produce electricity","Many homes now have solar panels on their roofs to generate solar power."],
+["wind farm","/ˈwɪnd fɑːm/","n.","B2",2,"風力發電場","a group of large windmills used for producing electricity","You can see the wind farm on the hills outside the city."],
+["biodiversity","/ˌbaɪ.əʊ.daɪˈvɜː.sə.ti/","n.","B2",3,"生物多樣性","the variety of plant and animal life in the world or in a particular habitat","Protecting biodiversity is essential for a healthy planet."],
+["ecosystem","/ˈiː.kəʊˌsɪs.təm/","n.","B2",3,"生態系統","all the living things in an area and the way they affect each other and the environment","A coral reef is a very complex and fragile ecosystem."],
+["endangered species","/ɪnˌdeɪn.dʒəd ˈspiː.ʃiːz/","n.","B2",3,"瀕危物種","a type of animal or plant that might soon disappear from the world","The giant panda is an endangered species."],
+["environment","/ɪnˈvaɪ.rən.mənt/","n.","B2",3,"環境","the air, land, and water where people, animals, and plants live","We need to take action to protect the natural environment."],
+["extinction","/ɪkˈstɪŋk.ʃən/","n.","B2",3,"滅絕","a situation in which a type of animal or plant no longer exists","The white rhino is on the brink of extinction."],
+["habitat","/ˈhæb.ɪ.tæt/","n.","B2",3,"棲息地","the natural home or environment of an animal, plant, or other organism","Deforestation is destroying the natural habitat of many animals."],
+["organic","/ɔːˈɡæn.ɪk/","adj.","B2",3,"有機的","produced without the use of artificial chemicals","Organic food is often more expensive, but many people believe it's healthier."],
+["awareness","/əˈweə.nəs/","n.","B2",4,"意識；認知","knowledge or understanding of a particular subject or situation","The campaign aims to raise public awareness of environmental issues."],
+["conservation","/ˌkɒn.səˈveɪ.ʃən/","n.","B2",4,"保育；保護","the protection of animals, plants, and natural resources","The conservation of rainforests is vital for global biodiversity."],
+["conserve","/kənˈsɜːv/","v.","B2",4,"節約；保存","to use as little of something as possible to make it last longer","It's important to conserve water, especially during a drought."],
+["deforestation","/diːˌfɒr.ɪˈsteɪ.ʃən/","n.","B2",4,"砍伐森林","the action of cutting down or burning all the trees in an area","Deforestation in the Amazon has increased in recent years."],
+["disposable","/dɪˈspəʊ.zə.bl/","adj.","B2",4,"一次性的；即棄的","designed to be thrown away after being used only once","We need to reduce our use of disposable products like plastic cups."],
+["impact","/ˈɪm.pækt/","n.","B2",4,"影響；衝擊","the powerful effect that something has on a situation or person","Human activity has a significant impact on the environment."],
+["pollute","/pəˈluːt/","v.","B2",4,"污染","to add harmful substances to the air, water, or land","Factories that pollute rivers should face heavy fines."],
+["pollution","/pəˈluː.ʃən/","n.","B2",4,"污染","the process of making air, water, or land dirty and dangerous","Air pollution from traffic is a major health concern in cities."],
+["recycle","/riːˈsaɪ.kl/","v.","B2",4,"回收再造","to process used materials so they can be used again","You should always recycle paper, glass, and plastic."],
+["sustainable","/səˈsteɪ.nə.bl/","adj.","B2",4,"可持續的","involving methods that do not completely use up or destroy natural resources","We need to find sustainable sources of energy for the future."],
+["waste","/weɪst/","n.","B2",4,"廢物；浪費","unwanted material or substances left after you have used something","The new policy aims to reduce household waste by 20%."]
+];
+
+const vocab=W.map(r=>({w:r[0],ipa:r[1],pos:r[2],cefr:r[3],cat:r[4],zh:r[5],def:r[6],exEn:r[7]}));
+
+/* ═══════════ TAB SWITCHING ═══════════ */
+function switchTab(id){
+ document.querySelectorAll('.nav-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===id));
+ document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+id));
+ initAudio();
+ if(id==='hm'&&!hmActive)hmNew();if(id==='sq'&&!sqActive)sqStart();if(id==='sb'&&!sbActive)sbNext();if(id==='wb'&&!wbStarted)wbStart();
+}
+
+/* ══════════════════════════════════════════
+   1. FLASHCARDS
+   ══════════════════════════════════════════ */
+let fcList=[...vocab],fcIdx=0,fcFlipped=false,fcKnownSet=new Set(),fcCatFilter=new Set([1,2,3,4]);
+
+function fcBuildCats(){
+ const el=document.getElementById('fc-cats');el.innerHTML='';
+ for(let c=1;c<=4;c++){const p=document.createElement('span');p.className='pill '+(fcCatFilter.has(c)?'on':'off');p.textContent=CAT_ICONS[c]+' '+CAT_NAMES[c];p.onclick=()=>{if(fcCatFilter.has(c))fcCatFilter.delete(c);else fcCatFilter.add(c);if(!fcCatFilter.size)fcCatFilter.add(c);fcApply();fcBuildCats()};el.appendChild(p);}
+}
+function fcApply(){fcList=vocab.filter(v=>fcCatFilter.has(v.cat));fcIdx=0;fcFlipped=false;fcRender();}
+function fcSort(m){if(m==='alpha')fcList.sort((a,b)=>a.w.localeCompare(b.w));else if(m==='random')fcList=shuffle(fcList);else fcList.sort((a,b)=>a.cat-b.cat||a.w.localeCompare(b.w));fcIdx=0;fcFlipped=false;fcRender();}
+function fcFlip(){fcFlipped=!fcFlipped;document.getElementById('fcCard').classList.toggle('flipped',fcFlipped);sfxFlip();}
+function fcPrev(){fcIdx=(fcIdx-1+fcList.length)%fcList.length;fcFlipped=false;fcRender();}
+function fcNext(){fcIdx=(fcIdx+1)%fcList.length;fcFlipped=false;fcRender();}
+function fcMark(k){const v=fcList[fcIdx];if(k){fcKnownSet.add(v.w);sfxCorrect();const r=document.getElementById('fcWrap').getBoundingClientRect();confetti(r.left+r.width/2,r.top+r.height/2);}else{fcKnownSet.delete(v.w);}fcUpdateStats();fcNext();}
+function fcResetProgress(){fcKnownSet.clear();fcUpdateStats();}
+function fcUpdateStats(){const t=vocab.filter(v=>fcCatFilter.has(v.cat)).length;const k=[...fcKnownSet].filter(w=>vocab.find(v=>v.w===w&&fcCatFilter.has(v.cat))).length;document.getElementById('fcKnown').textContent=k;document.getElementById('fcLearning').textContent=t-k;}
+function fcRender(){
+ if(!fcList.length){document.getElementById('fcFront').innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#94a3b8;font-size:14px;padding:20px">No words</div>';document.getElementById('fcBack').innerHTML='';document.getElementById('fcCount').textContent='0/0';return}
+ const v=fcList[fcIdx];const[c1,c2]=CAT_COLORS[v.cat];const known=fcKnownSet.has(v.w);
+ document.getElementById('fcCard').classList.remove('flipped');fcFlipped=false;
+ document.getElementById('fcFront').innerHTML=`
+  <div style="background:linear-gradient(135deg,${c1},${c2});height:100%;padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative">
+   <div style="position:absolute;top:10px;left:12px;display:flex;gap:4px;align-items:center">
+    <span style="font-size:10px;background:rgba(0,0,0,.25);padding:2px 8px;border-radius:8px;color:#fff">${CAT_ICONS[v.cat]} ${CAT_NAMES[v.cat]}</span>
+    ${known?'<span style="font-size:10px;background:rgba(34,197,94,.3);padding:2px 8px;border-radius:8px;color:#4ade80">✅</span>':''}
+   </div>
+   <div style="position:absolute;top:10px;right:12px;display:flex;gap:4px">
+    <span style="font-size:9px;background:rgba(0,0,0,.2);padding:2px 7px;border-radius:6px;color:#fff;font-weight:700">${v.pos}</span>
+    <span style="font-size:9px;background:rgba(0,0,0,.3);padding:2px 7px;border-radius:6px;color:#fbbf24;font-weight:700">${v.cefr}</span>
+   </div>
+   <div style="width:180px;height:120px;border-radius:12px;overflow:hidden;margin-bottom:8px;box-shadow:0 4px 15px rgba(0,0,0,.3)">${getSVG(v.w)}</div>
+   <div style="font-size:22px;font-weight:900;color:#fff;letter-spacing:1px;text-align:center">${v.w}</div>
+   <div style="font-family:monospace;font-size:12px;color:rgba(255,255,255,.7);margin-top:4px">${v.ipa}</div>
+   <button onclick="event.stopPropagation();speak('${v.w.replace(/'/g,"\\'")}')" style="margin-top:8px;background:rgba(0,0,0,.25);border:2px solid rgba(255,255,255,.3);color:#fff;padding:5px 16px;border-radius:18px;cursor:pointer;font-size:12px;font-weight:700">🔊 Listen</button>
+   <div style="position:absolute;bottom:8px;color:rgba(255,255,255,.3);font-size:10px">tap to flip →</div>
+  </div>`;
+ document.getElementById('fcBack').innerHTML=`
+  <div style="background:linear-gradient(135deg,#1e293b,#0f172a);height:100%;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid ${c1}">
+   <div style="position:absolute;top:10px;left:12px;font-size:10px;color:${c2}">${CAT_ICONS[v.cat]} ${CAT_NAMES[v.cat]}</div>
+   <div style="font-size:28px;font-weight:900;color:#fbbf24;margin-bottom:8px;text-align:center">${v.zh}</div>
+   <div style="width:100%;max-width:380px">
+    <div style="background:rgba(255,255,255,.04);border-left:3px solid ${c2};padding:10px 12px;border-radius:0 10px 10px 0;margin-bottom:8px">
+     <div style="font-size:9px;color:${c2};font-weight:700;margin-bottom:3px">📖 DEFINITION</div>
+     <div style="font-size:12px;color:#e2e8f0;line-height:1.5">${v.def}</div>
+    </div>
+    <div style="background:rgba(255,255,255,.04);border-left:3px solid #fbbf24;padding:10px 12px;border-radius:0 10px 10px 0">
+     <div style="font-size:9px;color:#fbbf24;font-weight:700;margin-bottom:3px">📖 EXAMPLE</div>
+     <div style="font-size:12px;color:#cbd5e1;line-height:1.5">${v.exEn.replace(new RegExp(v.w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),m=>'<b style="color:'+c2+'">'+m+'</b>')}</div>
+    </div>
+   </div>
+   <div style="position:absolute;bottom:8px;color:rgba(255,255,255,.3);font-size:10px">← tap to flip</div>
+  </div>`;
+ document.getElementById('fcCount').textContent=`${fcIdx+1}/${fcList.length}`;fcUpdateStats();
+}
+
+/* ══════════════════════════════════════════
+   2. HANGMAN
+   ══════════════════════════════════════════ */
+let hmWord=null,hmGuessed=new Set(),hmWrong=0,hmActive=false,hmDone=false,hmWins=0,hmLosses=0;
+let hmCatFilter=new Set([1,2,3,4]);
+function hmBuildCats(){const el=document.getElementById('hm-cats');el.innerHTML='';for(let c=1;c<=4;c++){const p=document.createElement('span');p.className='pill '+(hmCatFilter.has(c)?'on':'off');p.textContent=CAT_ICONS[c]+' '+c;p.onclick=()=>{if(hmCatFilter.has(c))hmCatFilter.delete(c);else hmCatFilter.add(c);if(!hmCatFilter.size)hmCatFilter.add(c);hmBuildCats()};el.appendChild(p);}}
+function hmNew(){
+ const pool=vocab.filter(v=>hmCatFilter.has(v.cat));if(!pool.length)return;
+ hmWord=pool[Math.floor(Math.random()*pool.length)];hmGuessed=new Set();hmWrong=0;hmDone=false;hmActive=true;
+ document.querySelectorAll('.hm-part').forEach(p=>p.style.opacity='0');
+ document.getElementById('hmCatHint').textContent=CAT_ICONS[hmWord.cat]+' '+CAT_NAMES[hmWord.cat];
+ document.getElementById('hmResult').classList.add('hidden');
+ document.getElementById('hmHint').textContent=`${hmWord.pos} · ${hmWord.w.replace(/[a-zA-Z]/g,'_').replace(/ /g,' ')} (${hmWord.w.length})`;
+ document.getElementById('hmIPABtn').style.display='';document.getElementById('hmIPABtn').textContent='💡 IPA Hint';
+ hmRenderBlanks();hmRenderKeys();document.getElementById('hmScore').textContent=`W:${hmWins} · L:${hmLosses}`;
+}
+function hmShowIPA(){document.getElementById('hmIPABtn').textContent='💡 '+hmWord.ipa;speak(hmWord.w);}
+function hmRenderBlanks(){const el=document.getElementById('hmBlanks');el.innerHTML='';for(const ch of hmWord.w){const sp=document.createElement('span');if(ch===' '){sp.className='hm-blank space';sp.textContent=' ';}else if(ch==='-'){sp.className='hm-blank revealed';sp.textContent='-';}else{sp.className='hm-blank';const up=ch.toUpperCase();if(hmGuessed.has(up)){sp.textContent=up;sp.classList.add('revealed');}else sp.textContent='';}el.appendChild(sp);}}
+function hmRenderKeys(){const el=document.getElementById('hmKeys');el.innerHTML='';for(let i=65;i<=90;i++){const ch=String.fromCharCode(i);const b=document.createElement('button');b.className='hm-letter';b.textContent=ch;b.style.background='rgba(255,255,255,.08)';b.style.color='#e2e8f0';if(hmGuessed.has(ch)){b.disabled=true;b.classList.add(hmWord.w.toUpperCase().includes(ch)?'correct':'wrong');}b.onclick=()=>hmGuess(ch);el.appendChild(b);}}
+function hmGuess(ch){
+ if(hmDone||hmGuessed.has(ch))return;hmGuessed.add(ch);
+ if(!hmWord.w.toUpperCase().includes(ch)){hmWrong++;sfxWrong();document.querySelectorAll(`.hm-part[data-i="${hmWrong-1}"]`).forEach(p=>p.style.opacity='1');}else{sfxCorrect();}
+ hmRenderBlanks();hmRenderKeys();
+ const letters=[...hmWord.w.toUpperCase()].filter(c=>c!==' '&&c!=='-');
+ if(letters.every(c=>hmGuessed.has(c))){hmDone=true;hmWins++;sfxWin();const r=document.getElementById('hmResult');r.classList.remove('hidden');r.innerHTML=`<span class="text-green-400">🎉 "${hmWord.w}" = ${hmWord.zh}</span>`;confetti(window.innerWidth/2,300);}
+ else if(hmWrong>=6){hmDone=true;hmLosses++;sfxBoom();const r=document.getElementById('hmResult');r.classList.remove('hidden');r.innerHTML=`<span class="text-red-400">💀 Answer: <b>${hmWord.w}</b> (${hmWord.zh})</span>`;hmWord.w.toUpperCase().split('').forEach(c=>{if(c!==' '&&c!=='-')hmGuessed.add(c)});hmRenderBlanks();hmRenderKeys();}
+ document.getElementById('hmScore').textContent=`W:${hmWins} · L:${hmLosses}`;
+}
+
+/* ══════════════════════════════════════════
+   3. SPEED QUIZ
+   ══════════════════════════════════════════ */
+let sqMode='en2zh',sqScore=0,sqStreak=0,sqTotal=0,sqActive=false,sqTimer=null,sqTimeLeft=10,sqCurrent=null,sqAnswered=false,sqPool=[];
+function sqSetMode(m){sqMode=m;['sqBtn1','sqBtn2','sqBtn3'].forEach((id,i)=>{const modes=['en2zh','zh2en','def2en'];document.getElementById(id).className='btn '+(m===modes[i]?'btn-gold':'btn-outline')+' text-xs';});sqStart();}
+function sqStart(){sqScore=0;sqStreak=0;sqTotal=0;sqActive=true;document.getElementById('sqScore').textContent=0;document.getElementById('sqStreak').textContent=0;sqPool=shuffle([...vocab]);sqNextQ();}
+function sqNextQ(){
+ sqAnswered=false;document.getElementById('sqNextWrap').classList.add('hidden');if(!sqPool.length)sqPool=shuffle([...vocab]);sqCurrent=sqPool.pop();
+ let correct,qText,opts;
+ if(sqMode==='en2zh'){qText=sqCurrent.w;correct=sqCurrent.zh;opts=[correct,...shuffle(vocab.filter(v=>v.w!==sqCurrent.w)).slice(0,3).map(v=>v.zh)];}
+ else if(sqMode==='zh2en'){qText=sqCurrent.zh;correct=sqCurrent.w;opts=[correct,...shuffle(vocab.filter(v=>v.w!==sqCurrent.w)).slice(0,3).map(v=>v.w)];}
+ else{qText=sqCurrent.def;correct=sqCurrent.w;opts=[correct,...shuffle(vocab.filter(v=>v.w!==sqCurrent.w)).slice(0,3).map(v=>v.w)];}
+ opts=shuffle(opts);
+ document.getElementById('sqCatLabel').textContent=CAT_ICONS[sqCurrent.cat]+' '+CAT_NAMES[sqCurrent.cat];
+ document.getElementById('sqWord').textContent=qText;document.getElementById('sqWord').style.fontSize=qText.length>25?'16px':'22px';
+ document.getElementById('sqIPA').textContent=sqMode==='en2zh'?sqCurrent.ipa:'';
+ const optsEl=document.getElementById('sqOpts');optsEl.innerHTML='';opts.forEach(o=>{const b=document.createElement('button');b.className='quiz-opt';b.textContent=o;b.onclick=()=>sqAnswer(b,o,correct);optsEl.appendChild(b);});
+ sqTimeLeft=10;document.getElementById('sqTimer').textContent=10;document.getElementById('sqBar').style.width='100%';clearInterval(sqTimer);
+ sqTimer=setInterval(()=>{sqTimeLeft-=.1;if(sqTimeLeft<=0){sqTimeLeft=0;clearInterval(sqTimer);sqTimeout();}document.getElementById('sqTimer').textContent=Math.ceil(sqTimeLeft);document.getElementById('sqBar').style.width=(sqTimeLeft/10*100)+'%';document.getElementById('sqBar').style.background=sqTimeLeft>3?'#fbbf24':'#ef4444';},100);
+}
+function sqAnswer(btn,chosen,correct){
+ if(sqAnswered)return;sqAnswered=true;clearInterval(sqTimer);sqTotal++;
+ document.querySelectorAll('.quiz-opt').forEach(b=>{b.classList.add('chosen');if(b.textContent===correct)b.classList.add('right');if(b===btn&&chosen!==correct)b.classList.add('wrong');});
+ if(chosen===correct){sqScore++;sqStreak++;sfxCorrect();confetti(btn.getBoundingClientRect().left+btn.offsetWidth/2,btn.getBoundingClientRect().top);}else{sqStreak=0;sfxWrong();btn.classList.add('shake');}
+ document.getElementById('sqScore').textContent=sqScore;document.getElementById('sqStreak').textContent=sqStreak;document.getElementById('sqNextWrap').classList.remove('hidden');
+}
+function sqTimeout(){if(sqAnswered)return;sqAnswered=true;sqTotal++;sqStreak=0;sfxWrong();const c=sqMode==='en2zh'?sqCurrent.zh:sqCurrent.w;document.querySelectorAll('.quiz-opt').forEach(b=>{b.classList.add('chosen');if(b.textContent===c)b.classList.add('right');});document.getElementById('sqStreak').textContent=0;document.getElementById('sqNextWrap').classList.remove('hidden');}
+
+/* ══════════════════════════════════════════
+   4. SPELLING BEE
+   ══════════════════════════════════════════ */
+let sbCurrent=null,sbActive=false,sbPool=[],sbCorrectN=0,sbTotalN=0,sbStreakN=0,sbDone=false;
+function sbNext(){sbDone=false;sbActive=true;if(!sbPool.length)sbPool=shuffle([...vocab]);sbCurrent=sbPool.pop();document.getElementById('sbCat').textContent=CAT_ICONS[sbCurrent.cat]+' '+CAT_NAMES[sbCurrent.cat];document.getElementById('sbLetters').textContent=sbCurrent.w.length+' letters';document.getElementById('sbPOS').textContent=sbCurrent.pos;document.getElementById('sbInput').value='';document.getElementById('sbInput').className='spell-input';document.getElementById('sbInput').disabled=false;document.getElementById('sbResult').classList.add('hidden');document.getElementById('sbNextWrap').classList.add('hidden');document.getElementById('sbZhHint').classList.add('hidden');document.getElementById('sbHintBtn').style.display='';document.getElementById('sbInput').focus();setTimeout(()=>speak(sbCurrent.w),300);}
+function sbSpeak(){if(sbCurrent)speak(sbCurrent.w);}
+function sbHint(){document.getElementById('sbZhHint').textContent='💡 '+sbCurrent.zh+' — '+sbCurrent.def;document.getElementById('sbZhHint').classList.remove('hidden');document.getElementById('sbHintBtn').style.display='none';}
+function sbCheck(){if(sbDone)return;const inp=document.getElementById('sbInput');const ans=inp.value.trim().toLowerCase();if(!ans)return;sbDone=true;sbTotalN++;const correct=ans===sbCurrent.w.toLowerCase();inp.className='spell-input '+(correct?'right':'wrong');inp.disabled=true;const res=document.getElementById('sbResult');res.classList.remove('hidden');if(correct){sbCorrectN++;sbStreakN++;sfxCorrect();res.innerHTML=`<span class="text-green-400">🎉 Correct! <b>${sbCurrent.w}</b> = ${sbCurrent.zh}</span>`;confetti(window.innerWidth/2,400);}else{sbStreakN=0;sfxWrong();res.innerHTML=`<span class="text-red-400">❌ <b>${sbCurrent.w}</b> (${sbCurrent.zh}) ${sbCurrent.ipa}</span>`;}document.getElementById('sbCorrect').textContent=sbCorrectN;document.getElementById('sbTotal').textContent=sbTotalN;document.getElementById('sbStreak').textContent=sbStreakN;document.getElementById('sbNextWrap').classList.remove('hidden');}
+function sbSkip(){if(sbDone)return;sbDone=true;sbTotalN++;sbStreakN=0;sfxWrong();document.getElementById('sbInput').disabled=true;const res=document.getElementById('sbResult');res.classList.remove('hidden');res.innerHTML=`<span class="text-yellow-400">⏭ <b>${sbCurrent.w}</b> (${sbCurrent.zh})</span>`;document.getElementById('sbTotal').textContent=sbTotalN;document.getElementById('sbStreak').textContent=0;document.getElementById('sbNextWrap').classList.remove('hidden');}
+
+/* ══════════════════════════════════════════
+   5. WORD BOMB 💣
+   ══════════════════════════════════════════ */
+let wbStarted=false,wbPool=[],wbCurrent=null,wbLives=3,wbScoreN=0,wbStreakVal=0,wbLevel=1,wbTimeMax=15,wbTimeLeft=15,wbTimer=null,wbDone=false,wbHighN=0;
+
+function wbStart(){
+ wbStarted=true;wbPool=shuffle([...vocab]);wbLives=3;wbScoreN=0;wbStreakVal=0;wbLevel=1;wbTimeMax=15;
+ document.getElementById('wbGameOver').classList.add('hidden');
+ wbUpdateUI();wbNextWord();
+}
+function wbUpdateUI(){
+ document.getElementById('wbLives').textContent='●'.repeat(wbLives)+'○'.repeat(3-wbLives);
+ document.getElementById('wbLives').style.color=wbLives>1?'#ef4444':'#fbbf24';
+ document.getElementById('wbScore').textContent=wbScoreN;
+ document.getElementById('wbLevel').textContent=wbLevel;
+ document.getElementById('wbStreakN').textContent=wbStreakVal;
+}
+function wbNextWord(){
+ wbDone=false;if(!wbPool.length)wbPool=shuffle([...vocab]);wbCurrent=wbPool.pop();
+ document.getElementById('wbCatLabel').textContent=CAT_ICONS[wbCurrent.cat]+' '+CAT_NAMES[wbCurrent.cat];
+ document.getElementById('wbDef').textContent=wbCurrent.def;
+ document.getElementById('wbClue').textContent=`${wbCurrent.pos} · ${wbCurrent.w.length} letters · Starts with "${wbCurrent.w[0].toUpperCase()}"`;
+ document.getElementById('wbBomb').textContent='💣';document.getElementById('wbBomb').className='text-6xl mb-2 bomb-pulse';
+ document.getElementById('wbInput').value='';document.getElementById('wbInput').className='spell-input';document.getElementById('wbInput').disabled=false;document.getElementById('wbInput').focus();
+ document.getElementById('wbResult').classList.add('hidden');document.getElementById('wbNextWrap').classList.add('hidden');
+ wbTimeMax=Math.max(6,16-wbLevel);wbTimeLeft=wbTimeMax;
+ document.getElementById('wbTimer').textContent=Math.ceil(wbTimeLeft);document.getElementById('wbBar').style.width='100%';
+ clearInterval(wbTimer);wbTimer=setInterval(()=>{
+  wbTimeLeft-=.1;if(wbTimeLeft<=0){wbTimeLeft=0;clearInterval(wbTimer);wbExplode();}
+  document.getElementById('wbTimer').textContent=Math.ceil(wbTimeLeft);
+  const pct=wbTimeLeft/wbTimeMax*100;document.getElementById('wbBar').style.width=pct+'%';
+  if(wbTimeLeft<3)sfxTick();
+ },100);
+ wbUpdateUI();
+}
+function wbSubmit(){
+ if(wbDone)return;const inp=document.getElementById('wbInput');const ans=inp.value.trim().toLowerCase();if(!ans)return;
+ if(ans===wbCurrent.w.toLowerCase()){wbDone=true;clearInterval(wbTimer);
+  wbStreakVal++;wbScoreN+=10+wbStreakVal*2;
+  if(wbStreakVal%5===0){wbLevel++;sfxDefuse();}else{sfxCorrect();}
+  inp.className='spell-input right';inp.disabled=true;
+  document.getElementById('wbBomb').textContent='✅';document.getElementById('wbBomb').className='text-6xl mb-2';
+  const res=document.getElementById('wbResult');res.classList.remove('hidden');res.innerHTML=`<span class="text-green-400">💚 Defused! <b>${wbCurrent.w}</b> = ${wbCurrent.zh} (+${10+wbStreakVal*2}pts)</span>`;
+  confetti(window.innerWidth/2,350);wbUpdateUI();document.getElementById('wbNextWrap').classList.remove('hidden');
+ }else{sfxWrong();inp.classList.add('shake');setTimeout(()=>inp.classList.remove('shake'),400);inp.value='';inp.focus();}
+}
+function wbExplode(){
+ if(wbDone)return;wbDone=true;wbLives--;wbStreakVal=0;sfxBoom();
+ document.getElementById('wbBomb').textContent='💥';document.getElementById('wbBomb').className='text-6xl mb-2 explode-anim';
+ document.getElementById('wbInput').disabled=true;document.getElementById('wbInput').className='spell-input wrong';
+ const res=document.getElementById('wbResult');res.classList.remove('hidden');res.innerHTML=`<span class="text-red-400">💥 BOOM! Answer: <b>${wbCurrent.w}</b> (${wbCurrent.zh})</span>`;
+ wbUpdateUI();
+ if(wbLives<=0){if(wbScoreN>wbHighN)wbHighN=wbScoreN;document.getElementById('wbFinalScore').textContent=wbScoreN;document.getElementById('wbHighScore').textContent=wbHighN;document.getElementById('wbGameOver').classList.remove('hidden');}
+ else{document.getElementById('wbNextWrap').classList.remove('hidden');}
+}
+function wbSkipWord(){if(wbDone)return;wbDone=true;clearInterval(wbTimer);wbLives--;wbStreakVal=0;sfxWrong();document.getElementById('wbInput').disabled=true;const res=document.getElementById('wbResult');res.classList.remove('hidden');res.innerHTML=`<span class="text-yellow-400">⏭ <b>${wbCurrent.w}</b> (${wbCurrent.zh})</span>`;wbUpdateUI();if(wbLives<=0){if(wbScoreN>wbHighN)wbHighN=wbScoreN;document.getElementById('wbFinalScore').textContent=wbScoreN;document.getElementById('wbHighScore').textContent=wbHighN;document.getElementById('wbGameOver').classList.remove('hidden');}else{document.getElementById('wbNextWrap').classList.remove('hidden');}}
+
+/* ══════════════════════════════════════════
+   6. EXPORT PDF
+   ══════════════════════════════════════════ */
+let exCatFilter=new Set([1,2,3,4]);
+function exBuildCats(){const el=document.getElementById('ex-cats');el.innerHTML='';for(let c=1;c<=4;c++){const p=document.createElement('span');p.className='pill '+(exCatFilter.has(c)?'on':'off');p.textContent=CAT_ICONS[c]+' '+CAT_NAMES[c];p.onclick=()=>{if(exCatFilter.has(c))exCatFilter.delete(c);else exCatFilter.add(c);if(!exCatFilter.size)exCatFilter.add(c);exBuildCats()};el.appendChild(p);}}
+function getF(){return vocab.filter(v=>exCatFilter.has(v.cat));}
+function doPrint(h){document.getElementById('printZone').innerHTML=h;setTimeout(()=>window.print(),300);}
+
+function exportFlashcards(){
+ const items=getF();const grouped={};items.forEach(v=>{if(!grouped[v.cat])grouped[v.cat]=[];grouped[v.cat].push(v);});
+ let h=`<div class="print-page"><div class="p-title">🃏 Vocabulary Flashcards — Environment B2</div><div class="p-subtitle">Cut & fold. Total: ${items.length} words</div>`;
+ let c=0;for(const cat of[1,2,3,4]){if(!grouped[cat])continue;h+=`<div class="p-cat-header">${CAT_ICONS[cat]} ${CAT_NAMES[cat]}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">`;
+ for(const v of grouped[cat]){h+=`<div style="border:2px dashed #94a3b8;border-radius:10px;overflow:hidden;break-inside:avoid;page-break-inside:avoid"><div style="background:#eef2ff;padding:10px;text-align:center;border-bottom:2px dashed #94a3b8;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="font-size:9px;color:#6366f1;font-weight:700">${v.pos} · ${v.cefr}</div><div style="font-size:16px;font-weight:900;color:#1e1b4b;text-transform:uppercase;margin:4px 0">${v.w}</div><div style="font-family:monospace;font-size:10px;color:#6366f1">${v.ipa}</div></div><div style="background:#fffbeb;padding:8px;min-height:80px"><div style="font-size:14px;font-weight:800;color:#92400e;text-align:center;margin-bottom:3px">${v.zh}</div><div style="font-size:8.5px;color:#44403c;line-height:1.3">📖 ${v.def}</div><div style="font-size:8.5px;color:#78716c;line-height:1.3;margin-top:2px">✏️ ${v.exEn}</div></div></div>`;c++;if(c%6===0&&c<items.length)h+=`</div></div><div class="print-page"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">`;}h+=`</div>`;}h+=`</div>`;doPrint(h);}
+
+function exportTable(){
+ const items=getF();const grouped={};items.forEach(v=>{if(!grouped[v.cat])grouped[v.cat]=[];grouped[v.cat].push(v);});
+ let h=`<div class="print-page"><div class="p-title">📋 Complete Vocabulary List — Environment B2</div><div class="p-subtitle">Total: ${items.length} words</div>`;
+ for(const cat of[1,2,3,4]){if(!grouped[cat])continue;h+=`<div class="p-cat-header">${CAT_ICONS[cat]} ${CAT_NAMES[cat]}</div><table class="p-table"><thead><tr><th>#</th><th>Word</th><th>IPA</th><th>POS</th><th>中文</th><th>Definition</th><th>Example</th></tr></thead><tbody>`;grouped[cat].forEach((v,i)=>{h+=`<tr><td>${i+1}</td><td style="font-weight:700">${v.w}</td><td style="font-family:monospace;font-size:8.5pt">${v.ipa}</td><td>${v.pos}</td><td style="font-weight:600">${v.zh}</td><td style="font-size:8.5pt">${v.def}</td><td style="font-size:8.5pt">${v.exEn}</td></tr>`;});h+=`</tbody></table>`;}h+=`</div>`;doPrint(h);}
+
+function exportQuiz(){
+ const items=getF();const s1=shuffle(items),s2=shuffle(items),s3=shuffle(items).slice(0,Math.min(15,items.length));
+ let h=`<div class="print-page"><div class="p-title">📝 Self-Test Quiz — Environment B2</div><div class="p-subtitle">Name: __________________ Date: __________________ Score: ______</div>`;
+ h+=`<div class="p-cat-header">Part A: Write the Chinese meaning (${s1.length} marks)</div><table class="p-table"><thead><tr><th>#</th><th>Word</th><th>POS</th><th>Answer</th></tr></thead><tbody>`;s1.forEach((v,i)=>{h+=`<tr><td>${i+1}</td><td style="font-weight:700">${v.w}</td><td>${v.pos}</td><td style="height:26px"></td></tr>`;});h+=`</tbody></table></div>`;
+ h+=`<div class="print-page"><div class="p-cat-header">Part B: Write the English word (${s2.length} marks)</div><table class="p-table"><thead><tr><th>#</th><th>Definition</th><th>Hint</th><th>Answer</th></tr></thead><tbody>`;s2.forEach((v,i)=>{h+=`<tr><td>${i+1}</td><td style="font-size:9pt">${v.def}</td><td style="font-family:monospace;color:#6366f1">${v.w[0]}${'_'.repeat(v.w.length-1)} (${v.w.length})</td><td style="height:26px"></td></tr>`;});h+=`</tbody></table></div>`;
+ h+=`<div class="print-page"><div class="p-cat-header">Part C: Fill in the Blank (${s3.length} marks)</div><div style="background:#f0f4ff;padding:8px;border-radius:6px;margin-bottom:8px;font-size:9.5pt"><b>Word Bank:</b> ${s3.map(v=>`<span style="border:1px solid #a5b4fc;padding:1px 6px;border-radius:4px;margin:1px;font-weight:600;display:inline-block">${v.w}</span>`).join(' ')}</div><ol style="font-size:10pt;line-height:2.2">`;s3.forEach(v=>{h+=`<li>${v.exEn.replace(new RegExp(v.w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),'__________________')}</li>`;});h+=`</ol>`;
+ h+=`</div><div class="print-page"><div class="p-cat-header">✅ Answer Key</div><div style="columns:2;font-size:9pt;line-height:1.8"><p><b>A:</b></p>`;s1.forEach((v,i)=>{h+=`${i+1}.${v.zh} `;});h+=`<p style="margin-top:6px"><b>B:</b></p>`;s2.forEach((v,i)=>{h+=`${i+1}.${v.w} `;});h+=`<p style="margin-top:6px"><b>C:</b></p>`;s3.forEach((v,i)=>{h+=`${i+1}.${v.w} `;});h+=`</div></div>`;doPrint(h);}
+
+function exportMiniDict(){
+ const items=[...getF()].sort((a,b)=>a.w.localeCompare(b.w));let h=`<div class="print-page"><div class="p-title">📖 Mini Dictionary — Environment B2 (A–Z)</div><div class="p-subtitle">${items.length} words</div><div style="columns:2;column-gap:16px;font-size:9.5pt;line-height:1.3">`;let cl='';
+ items.forEach(v=>{const fl=v.w[0].toUpperCase();if(fl!==cl){cl=fl;h+=`<div style="font-size:16pt;font-weight:900;color:#6366f1;margin-top:8px;border-bottom:2px solid #6366f1;padding-bottom:2px;break-after:avoid">${fl}</div>`;}h+=`<div style="margin:4px 0;padding:5px 7px;background:#f8fafc;border-radius:5px;border-left:3px solid #6366f1;break-inside:avoid"><span style="font-weight:800;font-size:11pt">${v.w}</span> <span style="font-size:7.5pt;color:#6366f1">${v.pos}</span><br><span style="font-family:monospace;font-size:8pt;color:#7c3aed">${v.ipa}</span> — <span style="font-weight:700;color:#b45309">${v.zh}</span><br><span style="font-size:8pt;color:#475569;font-style:italic">${v.def}</span></div>`;});
+ h+=`</div></div>`;doPrint(h);}
+
+function exportAll(){exportFlashcards();/* For all-in-one, call exportFlashcards which sets up print. User can re-click for others. */
+ /* Build combined */
+ const items=getF();const grouped={};items.forEach(v=>{if(!grouped[v.cat])grouped[v.cat]=[];grouped[v.cat].push(v);});
+ const s1=shuffle(items),s2=shuffle(items),s3=shuffle(items).slice(0,Math.min(15,items.length));
+ const sorted=[...items].sort((a,b)=>a.w.localeCompare(b.w));
+ let h='';
+ // Cover
+ h+=`<div class="print-page" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:85vh;text-align:center"><div style="font-size:50pt">📚</div><div style="font-size:24pt;font-weight:900;color:#312e81">Vocabulary Study Pack</div><div style="font-size:14pt;color:#6366f1">Environment · B2</div><div style="font-size:11pt;color:#64748b;margin-top:12px">${items.length} words · ${Object.keys(grouped).length} categories</div><div style="margin-top:30px;font-size:10pt;color:#94a3b8">Name: _________________________ Class: _________</div></div>`;
+ // Table
+ h+=`<div class="print-page"><div class="p-title">📋 Complete Vocabulary Table</div>`;for(const cat of[1,2,3,4]){if(!grouped[cat])continue;h+=`<div class="p-cat-header">${CAT_ICONS[cat]} ${CAT_NAMES[cat]}</div><table class="p-table"><thead><tr><th>#</th><th>Word</th><th>IPA</th><th>POS</th><th>中文</th><th>Definition</th><th>Example</th></tr></thead><tbody>`;grouped[cat].forEach((v,i)=>{h+=`<tr><td>${i+1}</td><td style="font-weight:700">${v.w}</td><td style="font-family:monospace;font-size:8pt">${v.ipa}</td><td>${v.pos}</td><td style="font-weight:600">${v.zh}</td><td style="font-size:8pt">${v.def}</td><td style="font-size:8pt">${v.exEn}</td></tr>`;});h+=`</tbody></table>`;}h+=`</div>`;
+ // Quiz
+ h+=`<div class="print-page"><div class="p-title">📝 Self-Test Quiz</div><div class="p-subtitle">Name: __________________ Score: ______</div>`;
+ h+=`<div class="p-cat-header">Part A: English → Chinese (${s1.length}m)</div><table class="p-table"><thead><tr><th>#</th><th>Word</th><th>Answer</th></tr></thead><tbody>`;s1.forEach((v,i)=>{h+=`<tr><td>${i+1}</td><td style="font-weight:700">${v.w}</td><td style="height:24px"></td></tr>`;});h+=`</tbody></table></div>`;
+ h+=`<div class="print-page"><div class="p-cat-header">Part B: Definition → English (${s2.length}m)</div><table class="p-table"><thead><tr><th>#</th><th>Definition</th><th>Hint</th><th>Answer</th></tr></thead><tbody>`;s2.forEach((v,i)=>{h+=`<tr><td>${i+1}</td><td style="font-size:8.5pt">${v.def}</td><td style="font-family:monospace;color:#6366f1;font-size:8.5pt">${v.w[0]}${'_'.repeat(v.w.length-1)}</td><td style="height:24px"></td></tr>`;});h+=`</tbody></table></div>`;
+ h+=`<div class="print-page"><div class="p-cat-header">Part C: Fill in the Blank (${s3.length}m)</div><div style="background:#f0f4ff;padding:6px;border-radius:6px;margin-bottom:6px;font-size:9pt"><b>Word Bank:</b> ${s3.map(v=>`<span style="border:1px solid #a5b4fc;padding:1px 5px;border-radius:3px;margin:1px;font-weight:600">${v.w}</span>`).join(' ')}</div><ol style="font-size:10pt;line-height:2.1">`;s3.forEach(v=>{h+=`<li>${v.exEn.replace(new RegExp(v.w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),'_______________')}</li>`;});h+=`</ol></div>`;
+ // Answers
+ h+=`<div class="print-page"><div class="p-cat-header">✅ Answers</div><div style="columns:2;font-size:9pt;line-height:1.7"><p><b>A:</b> `;s1.forEach((v,i)=>{h+=`${i+1}.${v.zh} `;});h+=`</p><p><b>B:</b> `;s2.forEach((v,i)=>{h+=`${i+1}.${v.w} `;});h+=`</p><p><b>C:</b> `;s3.forEach((v,i)=>{h+=`${i+1}.${v.w} `;});h+=`</p></div>`;
+ // Mini Dict
+ h+=`<div class="p-cat-header" style="margin-top:20px">📖 Mini Dictionary (A–Z)</div><div style="columns:2;column-gap:14px;font-size:9pt">`;let cl='';sorted.forEach(v=>{const fl=v.w[0].toUpperCase();if(fl!==cl){cl=fl;h+=`<div style="font-size:14pt;font-weight:900;color:#6366f1;margin-top:6px;border-bottom:1.5px solid #6366f1;break-after:avoid">${fl}</div>`;}h+=`<div style="margin:3px 0;padding:4px 6px;background:#f8fafc;border-radius:4px;border-left:2px solid #6366f1;break-inside:avoid"><b>${v.w}</b> <span style="font-size:7pt;color:#6366f1">${v.pos}</span> <span style="font-family:monospace;font-size:7.5pt;color:#7c3aed">${v.ipa}</span><br><span style="font-weight:700;color:#b45309">${v.zh}</span> — <span style="font-size:7.5pt;color:#475569">${v.def}</span></div>`;});h+=`</div></div>`;
+ doPrint(h);
+}
+
+/* ═══════════ KEYBOARD SHORTCUTS ═══════════ */
+document.addEventListener('keydown',e=>{
+ const sb=document.getElementById('panel-sb');
+ const wb=document.getElementById('panel-wb');
+ if(e.key==='Enter'){
+  if(sb.classList.contains('active')){if(sbDone)sbNext();else sbCheck();return;}
+  if(wb.classList.contains('active')){if(wbDone){if(wbLives>0)wbNextWord();else wbStart();}else wbSubmit();return;}
+ }
+});
+
+/* ═══════════ INIT ═══════════ */
+fcBuildCats();fcRender();hmBuildCats();exBuildCats();
+document.body.addEventListener('click',()=>initAudio(),{once:true});
+</script>
+
+
+</body></html>
